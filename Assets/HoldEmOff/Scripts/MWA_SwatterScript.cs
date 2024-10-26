@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class MWA_SwatterMovementScript : MonoBehaviour
 {
-    // List to track insects in the swatter's collider area
+    // List to track insects that collided with the swatter
     private List<Collider2D> insectsInRange = new List<Collider2D>();
 
-    // Update is called once per frame
     void Update()
     {
         // Get the mouse position in screen coordinates
@@ -25,12 +24,10 @@ public class MWA_SwatterMovementScript : MonoBehaviour
         // Check if the left mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
-            // Check again to make sure the list is not empty before accessing
             if (insectsInRange.Count > 0)
             {
-                // Squash the first insect in the list
                 Destroy(insectsInRange[0].gameObject);
-                insectsInRange.RemoveAt(0); // Remove it from the list after squashing
+                insectsInRange.RemoveAt(0);
             }
         }
     }
