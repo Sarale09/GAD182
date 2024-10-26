@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1164421500979769304}
   m_Layer: 0
   m_Name: Insect
-  m_TagString: Untagged
+  m_TagString: Insect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  rotationSpeed: 400
+  rotationSpeed: 500
 --- !u!58 &1164421500979769304
 CircleCollider2D:
   m_ObjectHideFlags: 0
