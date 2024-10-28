@@ -23,6 +23,12 @@ public class HE_MouseController_BarFight : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         transform.position = Vector3.MoveTowards(transform.position, mousePos, speed * Time.deltaTime);
     }
+
+    
+
+
+
+
 }
    
 
