@@ -14,13 +14,13 @@ public class MWA_InsectSpawnerScript : MonoBehaviour
     private float maxSpawnTime;
 
     private float timeUntilSpawn;
-    // Start is called before the first frame update
+    
     void Awake()
     {
         SetTimeUntilSpawn(); 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         timeUntilSpawn -= Time.deltaTime;

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class MWA_SwatterMovementScript : MonoBehaviour
 {
-    // List to track insects that collided with the swatter
-    private List<Collider2D> insectsInRange = new List<Collider2D>();
-
+    private BoxCollider2D boxCollider;
+    void Start()
+    {
+        // Get the BoxCollider2D component attached to this GameObject
+        boxCollider = GetComponent<BoxCollider2D>();
+    }
     void Update()
     {
         // Get the mouse position in screen coordinates
@@ -24,20 +27,16 @@ public class MWA_SwatterMovementScript : MonoBehaviour
         // Check if the left mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
-            if (insectsInRange.Count > 0)
+            // Use the BoxCollider2D size for the overlap check
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0f);
+            foreach (var hitCollider in hitColliders)
             {
-                Destroy(insectsInRange[0].gameObject);
-                insectsInRange.RemoveAt(0);
+                if (hitCollider.CompareTag("Insect"))
+                {
+                    Destroy(hitCollider.gameObject); // Kill the insect
+                    break; // Exit after killing the first insect found
+                }
             }
-        }
-    }
-
-    // Called when an insect enters the swatter's trigger area
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Insect") && !insectsInRange.Contains(other))
-        {
-            insectsInRange.Add(other);
         }
     }
 }

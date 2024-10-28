@@ -20,21 +20,17 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
 
-        // Automatically find the bread by tag
+        
         GameObject breadObject = GameObject.FindWithTag("Bread");
         if (breadObject != null)
         {
             bread = breadObject.transform;
         }
-        else
-        {
-            Debug.LogError("Bread object not found in the scene. Ensure it has the tag 'Bread'.");
-        }
     }
 
     private void FixedUpdate()
     {
-        if (bread == null) return; // Stop if bread is not assigned
+        if (bread == null) return; 
         UpdateToTargetDirection();
         RotateToTarget();
         SetVelocity();
