@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class NW_Villager1 : NW_BaseVillager
 {
-    public NW_Counter counter;
+    public delegate void SimpleEvent();
+    public event SimpleEvent OnFlierHandout;
     
     /// <summary>
     /// This villager goes from left to right. 
@@ -14,13 +15,13 @@ public class NW_Villager1 : NW_BaseVillager
     
     void OnEnable()
     {
-        counter.OnFlierHandout?.AddListener(GiveFlier);
+        OnFlierHandout += GiveFlier;
     }
 
     void OnDisable()
     {
-        counter.OnFlierHandout?.Invoke();
-        counter.OnFlierHandout?.RemoveListener(GiveFlier);
+        OnFlierHandout?.Invoke();
+        OnFlierHandout -= GiveFlier;
     }
 
     // Update is called once per frame
@@ -28,10 +29,15 @@ public class NW_Villager1 : NW_BaseVillager
     {
         MoveRight();
         OnMouseOver();
+
+        // if (Input.GetKeyDown(KeyCode.Y))
+        // {
+        //     OnFlierHandout?.Invoke();
+        // }
     }
     
     public void GiveFlier()
     {
-        Debug.Log("You threw a flier at a villager.");
+        Debug.Log("You handed out a flier.");
     }
 }

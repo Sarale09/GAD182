@@ -37,9 +37,11 @@ public class NW_BaseVillager : NW_Movement
 
     public void OnMouseOver()
     {
+        Debug.Log("Mouse is currently hovering over.");
+        
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("You handed out a flier.");
+            Debug.Log("You threw a flier at a villager.");
             Destroy(gameObject);
         }
     }

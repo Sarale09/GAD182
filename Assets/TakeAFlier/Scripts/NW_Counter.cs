@@ -6,19 +6,20 @@ using UnityEngine.Events;
 
 public class NW_Counter : MonoBehaviour
 {
-    public float fliers = 15;
-    public UnityEvent OnFlierHandout;
+    public NW_Villager1 villager1;
     
-    // Start is called before the first frame update
-    void OnEnable()
+    
+    public float fliers = 15;
+    
+    private void OnEnable()
     {
-        OnFlierHandout.AddListener(ScoreCountdown);
+        villager1.OnFlierHandout += ScoreCountdown;
         Debug.Log($"You have {fliers} fliers to hand out today.");
     }
 
     private void OnDisable()
     {
-        OnFlierHandout.RemoveListener(ScoreCountdown);
+        villager1.OnFlierHandout -= ScoreCountdown;
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class NW_Counter : MonoBehaviour
         
     }
 
-    public void ScoreCountdown()
+    private void ScoreCountdown()
     {
         fliers -= 1;
         Debug.Log($"You have {fliers} fliers remaining.");
