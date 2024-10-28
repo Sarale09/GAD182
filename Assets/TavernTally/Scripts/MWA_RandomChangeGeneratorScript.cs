@@ -4,16 +4,11 @@ using UnityEngine.UI;
 public class ChangeCalculator : MonoBehaviour
 {
     public Text textBox; // Displays the required change
-    public int requiredChange;
+    public float requiredChange;
 
     void Start()
     {
-        GenerateNewChange();
-    }
-
-    void GenerateNewChange()
-    {
-        requiredChange = Random.Range(1, 21) * 5; // Pick a random change amount in multiples of 5 between 5 and 100
-        textBox.text = $"Change Needed: ${requiredChange}"; // Display change as a whole dollar amount
+        requiredChange = Random.Range(20, 2001) * 0.05f; // Pick a random change amount between 1.00 and 100.00 in multiples of 5 cents
+        textBox.text = $"Change Needed: ${requiredChange:F2}"; // Display change with two decimal places
     }
 }

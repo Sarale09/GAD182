@@ -6,14 +6,14 @@ public class ChangeCollector : MonoBehaviour
     public Text messageBox; // Displays success or error messages
     [SerializeField]
     public ChangeCalculator changeCalculator; // Reference to ChangeGenerator script
-    private int collectedChange; // Tracks the total collected change
+    private float collectedChange; // Tracks the total collected change
 
     void Start()
     {
         ResetCollectedChange();
     }
 
-    public void AddChange(int amount)
+    public void AddChange(float amount)
     {
         collectedChange += amount; // Add the amount corresponding to the button clicked
         CheckCollectedChange();
