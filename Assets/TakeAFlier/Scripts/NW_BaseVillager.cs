@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NW_Villager : MonoBehaviour
+public class NW_BaseVillager : NW_Movement
 {
     public UnityEvent OutOfBounds;
     
@@ -33,6 +33,15 @@ public class NW_Villager : MonoBehaviour
     void Destroy()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("You handed out a flier.");
+            Destroy(gameObject);
+        }
     }
     
 }

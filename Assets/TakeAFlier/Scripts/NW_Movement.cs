@@ -24,15 +24,15 @@ public class NW_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveLeft();   
+        // MoveLeft();   
     }
 
-    void MoveLeft()
+    public void MoveLeft()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
-    void MoveRight()
+    public void MoveRight()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
