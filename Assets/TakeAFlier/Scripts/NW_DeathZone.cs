@@ -24,19 +24,10 @@ public class NW_DeathZone : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        villager = FindObjectOfType<GameObject>();
-        
         if (other.gameObject.CompareTag("Villager")) // compare class/tag
         {
-            Destroy(villager);
+            Destroy(other.gameObject);
+            //OnOutOfBounds?.Invoke();
         }
     }
-
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Villager"))
-    //     {
-    //         Destroy(villager);
-    //     }
-    // }
 }

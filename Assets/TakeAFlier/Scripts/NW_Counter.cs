@@ -22,13 +22,7 @@ public class NW_Counter : MonoBehaviour
         villager1.OnFlierHandout -= ScoreCountdown;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void ScoreCountdown()
+    public void ScoreCountdown()
     {
         fliers -= 1;
         Debug.Log($"You have {fliers} fliers remaining.");

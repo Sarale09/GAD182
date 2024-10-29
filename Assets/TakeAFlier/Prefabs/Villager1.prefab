@@ -172,4 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  speed: 5
+  speed: 2
+  counter: {fileID: 2223942871921748562, guid: a6d74d252dbd43c4f8c9ea01f912b6aa, type: 3}

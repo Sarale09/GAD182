@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class NW_BaseVillager : NW_Movement
 {
     // public NW_DeathZone deathZone;
+    public NW_Counter counter;
     
     public delegate void SimpleEvent();
     public event SimpleEvent OnFlierHandout;
@@ -20,7 +21,8 @@ public class NW_BaseVillager : NW_Movement
     void OnEnable()
     {
         //deathZone.OnOutOfBounds += Destroy;
-        OnFlierHandout += GiveFlier;
+        //OnFlierHandout += GiveFlier;
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -28,7 +30,7 @@ public class NW_BaseVillager : NW_Movement
     {
         //deathZone.OnOutOfBounds += Destroy;
         OnFlierHandout?.Invoke();
-        OnFlierHandout -= GiveFlier;
+        //OnFlierHandout -= GiveFlier;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class NW_BaseVillager : NW_Movement
         MoveRight();
     }
 
-    void Destroy()
+    private void Destroy()
     {
         // this.gameObject.SetActive(false);
         Destroy(gameObject);
@@ -45,21 +47,21 @@ public class NW_BaseVillager : NW_Movement
 
     public void OnMouseOver()
     {
-        Debug.Log("Mouse is currently hovering over.");
+        // Debug.Log("Mouse is currently hovering over.");
         
         if (Input.GetMouseButtonDown(0) && !hasFlier)
         {
             Debug.Log("You threw a flier at a villager.");
-            //Destroy(gameObject);
 
             spriteRenderer.material.color = Color.blue;
             
-            OnFlierHandout?.Invoke();
+            // OnFlierHandout?.Invoke();
+            counter.ScoreCountdown();
             hasFlier = true;
         }
     }
-    
-    public void GiveFlier()
+
+    private void GiveFlier()
     {
         Debug.Log("You handed out a flier.");
     }
