@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class HE_RepairClick : MonoBehaviour
 {
-    public GameObject hole;
-    public GameObject patch;
-    public Camera mCamera;
-    RaycastHit raycastHit;
+    public Material broke;
+    public Material fix;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Yo");
+        gameObject.GetComponent<MeshRenderer>().material = broke;
     }
 
     // Update is called once per frame
@@ -21,20 +20,19 @@ public class HE_RepairClick : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            OnClick();
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+
+                if (hit.collider.tag == "Hole")
+                {
+                    Debug.Log("Hit Register");
+                    this.gameObject.GetComponent<MeshRenderer>().material = fix;
+                }
+               
+            }
         }
     }
-
-    public void OnClick()
-    {
-        Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
-        int layerMask = LayerMask.GetMask("Enviroment");
-        if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity, layerMask))
-        {
-
-        }
-    }
-
-
-
 }

@@ -134,9 +134,10 @@ GameObject:
   - component: {fileID: 103670079}
   - component: {fileID: 103670078}
   - component: {fileID: 103670077}
+  - component: {fileID: 103670080}
   m_Layer: 0
   m_Name: Hole (4)
-  m_TagString: Untagged
+  m_TagString: Hole4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +228,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103670075}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &103670080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103670075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
+--- !u!1 &132003112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132003114}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &132003114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132003112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4594923, y: 1.0834513, z: 27.773565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282967388
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,9 +488,10 @@ GameObject:
   - component: {fileID: 686378439}
   - component: {fileID: 686378438}
   - component: {fileID: 686378437}
+  - component: {fileID: 686378440}
   m_Layer: 0
   m_Name: Hole (1)
-  m_TagString: Untagged
+  m_TagString: Hole1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -535,6 +582,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686378435}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &686378440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686378435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
 --- !u!1 &881784798
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,9 +608,10 @@ GameObject:
   - component: {fileID: 881784802}
   - component: {fileID: 881784801}
   - component: {fileID: 881784800}
+  - component: {fileID: 881784803}
   m_Layer: 0
   m_Name: Hole (3)
-  m_TagString: Untagged
+  m_TagString: Hole3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,6 +702,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881784798}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &881784803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881784798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
 --- !u!1 &1092900316
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,9 +728,10 @@ GameObject:
   - component: {fileID: 1092900320}
   - component: {fileID: 1092900319}
   - component: {fileID: 1092900318}
+  - component: {fileID: 1092900321}
   m_Layer: 0
   m_Name: Hole
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,6 +822,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092900316}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1092900321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092900316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
 --- !u!1 &1237621582
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,9 +848,10 @@ GameObject:
   - component: {fileID: 1237621586}
   - component: {fileID: 1237621585}
   - component: {fileID: 1237621584}
+  - component: {fileID: 1237621587}
   m_Layer: 0
   m_Name: Hole (2)
-  m_TagString: Untagged
+  m_TagString: Hole2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,6 +942,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237621582}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1237621587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237621582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
 --- !u!1 &1280680742
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,9 +968,10 @@ GameObject:
   - component: {fileID: 1280680746}
   - component: {fileID: 1280680745}
   - component: {fileID: 1280680744}
+  - component: {fileID: 1280680747}
   m_Layer: 0
   m_Name: Hole (5)
-  m_TagString: Untagged
+  m_TagString: Hole5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,9 +1062,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280680742}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1280680747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280680742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c179ccec9890d42b16f19793937e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broke: {fileID: 2100000, guid: f78a3f23c78016d47984c4dbe1b9d655, type: 2}
+  fix: {fileID: 2100000, guid: 1f6e4383ef1a4a541b8fe2f4d5e0fb9d, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 509168155}
   - {fileID: 282967392}
+  - {fileID: 132003114}
