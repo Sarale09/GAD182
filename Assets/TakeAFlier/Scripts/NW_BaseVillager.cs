@@ -35,10 +35,7 @@ public class NW_BaseVillager : NW_Movement
     void Update()
     {
         MoveRight();
-        OnMouseOver();
     }
-
-    
 
     void Destroy()
     {
@@ -48,7 +45,7 @@ public class NW_BaseVillager : NW_Movement
 
     public void OnMouseOver()
     {
-        // Debug.Log("Mouse is currently hovering over.");
+        Debug.Log("Mouse is currently hovering over.");
         
         if (Input.GetMouseButtonDown(0) && !hasFlier)
         {
