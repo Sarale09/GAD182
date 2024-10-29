@@ -6,44 +6,65 @@ using UnityEngine.Events;
 
 public class NW_BaseVillager : NW_Movement
 {
-    public UnityEvent OutOfBounds;
+    // public NW_DeathZone deathZone;
+    
+    public delegate void SimpleEvent();
+    public event SimpleEvent OnFlierHandout;
+    
+    private SpriteRenderer spriteRenderer;
+    private bool hasFlier;
+    
+    
     
     // Start is called before the first frame update
     void OnEnable()
     {
-        OutOfBounds.AddListener(Destroy);
+        //deathZone.OnOutOfBounds += Destroy;
+        OnFlierHandout += GiveFlier;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnDisable()
     {
-        OutOfBounds.RemoveListener(Destroy);
+        //deathZone.OnOutOfBounds += Destroy;
+        OnFlierHandout?.Invoke();
+        OnFlierHandout -= GiveFlier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MoveRight();
+        OnMouseOver();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        OutOfBounds.Invoke();
-    }
+    
 
     void Destroy()
     {
-        this.gameObject.SetActive(false);
+        // this.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void OnMouseOver()
     {
-        Debug.Log("Mouse is currently hovering over.");
+        // Debug.Log("Mouse is currently hovering over.");
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !hasFlier)
         {
             Debug.Log("You threw a flier at a villager.");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            spriteRenderer.material.color = Color.blue;
+            
+            OnFlierHandout?.Invoke();
+            hasFlier = true;
         }
+    }
+    
+    public void GiveFlier()
+    {
+        Debug.Log("You handed out a flier.");
     }
     
 }

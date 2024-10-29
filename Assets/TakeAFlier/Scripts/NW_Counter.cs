@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class NW_Counter : MonoBehaviour
 {
-    public NW_Villager1 villager1;
+    public NW_BaseVillager villager1;
     
     
     public float fliers = 15;
