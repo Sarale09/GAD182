@@ -5,7 +5,7 @@ using UnityEngine;
 public class MWA_InsectSpawnerScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject insectPrefab;
+    private GameObject[] insectPrefabs; // Array to hold different insect prefabs
 
     [SerializeField]
     private float minSpawnTime;
@@ -14,19 +14,18 @@ public class MWA_InsectSpawnerScript : MonoBehaviour
     private float maxSpawnTime;
 
     private float timeUntilSpawn;
-    
+
     void Awake()
     {
-        SetTimeUntilSpawn(); 
+        SetTimeUntilSpawn();
     }
 
-    
     void Update()
     {
         timeUntilSpawn -= Time.deltaTime;
-        if (timeUntilSpawn <= 0) 
-        { 
-            Instantiate(insectPrefab, transform.position, Quaternion.identity);
+        if (timeUntilSpawn <= 0)
+        {
+            SpawnRandomInsect();
             SetTimeUntilSpawn();
         }
     }
@@ -34,5 +33,15 @@ public class MWA_InsectSpawnerScript : MonoBehaviour
     private void SetTimeUntilSpawn()
     {
         timeUntilSpawn = Random.Range(minSpawnTime, maxSpawnTime);
+    }
+
+    private void SpawnRandomInsect()
+    {
+        // Choose a random insect prefab from the array
+        int randomIndex = Random.Range(0, insectPrefabs.Length);
+        GameObject selectedInsect = insectPrefabs[randomIndex];
+
+        // Instantiate the randomly selected insect
+        Instantiate(selectedInsect, transform.position, Quaternion.identity);
     }
 }

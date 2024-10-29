@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6682baa691f6af4887201ad4f7f4e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  insectPrefab: {fileID: 3879038720025136863, guid: a5e760f755b10384cb834cc295f1963e, type: 3}
+  insectPrefabs:
+  - {fileID: 3879038720025136863, guid: a5e760f755b10384cb834cc295f1963e, type: 3}
+  - {fileID: 3879038720025136863, guid: bf873f32e7762ce45944e4d6be41aeab, type: 3}
+  - {fileID: 3879038720025136863, guid: a542fc96338cce04a9ed1145bb70b463, type: 3}
   minSpawnTime: 2
   maxSpawnTime: 5
