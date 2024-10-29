@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MWA_InsectAIMovementScript : MonoBehaviour
@@ -13,7 +11,9 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private Vector2 targetDirection;
-    private Transform bread;
+    private Bread breadScript; // Reference to the Bread script
+
+    private bool isEating = false; // Track if insect is currently eating
 
     private void Awake()
     {
@@ -22,13 +22,13 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
         GameObject breadObject = GameObject.FindWithTag("Bread");
         if (breadObject != null)
         {
-            bread = breadObject.transform;
+            breadScript = breadObject.GetComponent<Bread>();
         }
     }
 
     private void FixedUpdate()
     {
-        if (bread == null) return;
+        if (breadScript == null) return;
         UpdateToTargetDirection();
         RotateToTarget();
         SetVelocity();
@@ -36,7 +36,7 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
 
     private void UpdateToTargetDirection()
     {
-        targetDirection = (bread.position - transform.position).normalized;
+        targetDirection = (breadScript.transform.position - transform.position).normalized;
     }
 
     private void RotateToTarget()
@@ -50,12 +50,32 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
     {
         rigidbody.velocity = targetDirection * speed;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Insect"))
+        if (collision.gameObject.CompareTag("Bread"))
         {
             Debug.Log("Insect has collided with the bread.");
+            isEating = true;
+            StartCoroutine(EatBread());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bread"))
+        {
+            isEating = false;
+            StopCoroutine(EatBread());
+        }
+    }
+
+    private IEnumerator EatBread()
+    {
+        while (isEating && breadScript != null)
+        {
+            breadScript.ReduceHealth(1);
+            yield return new WaitForSeconds(2f); // Wait for 2 second between each health reduction
         }
     }
 }

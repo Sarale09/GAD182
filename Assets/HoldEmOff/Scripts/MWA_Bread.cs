@@ -3,35 +3,35 @@ using UnityEngine;
 
 public class Bread : MonoBehaviour
 {
-    public int health = 10;
-    private int insectCount = 0; // Counter for the number of insects
-    private float eatTimer = 0f; // Timer to track 1-second intervals
+    [SerializeField]
+    private int health = 10; // Starting health of the bread
 
-    private void Update()
+    // Method to reduce health
+    public void ReduceHealth(int amount)
     {
-        if (insectCount > 0 && health > 0) // Check if there are insects eating
+        health -= amount;
+        Debug.Log("Bread health reduced by " + amount + ". Current health: " + health);
+
+        // Check if health has reached zero
+        if (health <= 0)
         {
-            eatTimer += Time.deltaTime;
-
-            // Reduce health every second for each insect
-            if (eatTimer >= 1f)
-            {
-                health -= insectCount; // Decrease health based on number of insects
-                eatTimer = 0f; // Reset the timer
-
-                Debug.Log("Health reduced. Current health: " + health); // Debug log for health
-
-                if (health <= 0)
-                {
-                    Debug.Log("The bread has been fully eaten!");
-                    health = 0; // Ensure health doesn't go negative
-                }
-            }
+            health = 0;
+            OnBreadConsumed();
         }
     }
-    public void ReduceBreadHealth()
+
+    // Called when bread's health reaches zero
+    private void OnBreadConsumed()
     {
-        health -= health;
+        Debug.Log("Bread has been fully consumed!");
+        // Optionally, destroy the bread or trigger an event
+        Destroy(gameObject);
     }
 
+    // Getter for health if you need to access the current health value elsewhere
+    public int GetHealth()
+    {
+        return health;
+    }
 }
+
