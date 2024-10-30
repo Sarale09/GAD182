@@ -6,12 +6,7 @@ public class AS_KegMovement : MonoBehaviour
 {
     bool gameOn = true;
     protected Vector3 movementDir = new Vector3(10, 0, 0);
-    public float smoothness = 0.5f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float smoothness = 0.3f;
 
     // Update is called once per frame
     void Update()
