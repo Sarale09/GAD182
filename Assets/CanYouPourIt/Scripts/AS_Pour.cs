@@ -18,7 +18,7 @@ public class AS_Pour : MonoBehaviour
     void Update()
     {
         dropLoc = keg.transform.position;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             Instantiate(aleDrop, dropLoc, Quaternion.identity);
         }
