@@ -1,5 +1,9 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class Bread : MonoBehaviour
 {
@@ -19,6 +23,9 @@ public class Bread : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    public TextMeshProUGUI gameOverText; // Drag and drop your TextMeshPro element
+
     private void Start()
     {
         // Get the SpriteRenderer component
@@ -30,7 +37,6 @@ public class Bread : MonoBehaviour
     public void ReduceHealth(int amount)
     {
         health -= amount;
-        Debug.Log("Bread health reduced by " + amount + ". Current health: " + health);
 
         UpdateSprite(); // Update the sprite based on new health
 
@@ -60,13 +66,31 @@ public class Bread : MonoBehaviour
     // Called when bread's health reaches zero
     private void OnBreadConsumed()
     {
-        Debug.Log("Bread has been fully consumed!");
-        Destroy(gameObject); // Destroy the bread object
+        // Show "GAME OVER" text
+        gameOverText.gameObject.SetActive(true);
+
+        // Destroy the bread object
+        Destroy(gameObject);
+
+        // Destroy the swatter if it exists
+        GameObject swatter = GameObject.FindWithTag("Swatter");
+        if (swatter != null)
+        {
+            Destroy(swatter);
+        }
+
+        // Destroy all insects and insect spawners
+        GameObject[] insects = GameObject.FindGameObjectsWithTag("Insect");
+        foreach (GameObject insect in insects)
+        {
+            Destroy(insect);
+        }
+        GameObject[] insectSpawners = GameObject.FindGameObjectsWithTag("InsectSpawner");
+        foreach (GameObject insectSpawner in insectSpawners)
+        {
+            Destroy(insectSpawner);
+        }
     }
 
-    // Getter for health if you need to access the current health value elsewhere
-    public int GetHealth()
-    {
-        return health;
-    }
+
 }

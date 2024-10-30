@@ -55,7 +55,6 @@ public class MWA_InsectAIMovementScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bread"))
         {
-            Debug.Log("Insect has collided with the bread.");
             isEating = true;
             StartCoroutine(EatBread());
         }
