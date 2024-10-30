@@ -72,5 +72,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9850bf528d10335459482fe7a2a7fff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villager1: {fileID: -6650351613998324368, guid: 431ee031d3befbc468d8a2f208b2b9ee, type: 3}
+  villager1: {fileID: 0}
   fliers: 15

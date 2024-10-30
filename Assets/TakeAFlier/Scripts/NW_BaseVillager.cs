@@ -13,7 +13,7 @@ public class NW_BaseVillager : NW_Movement
     public event SimpleEvent OnFlierHandout;
     
     private SpriteRenderer spriteRenderer;
-    private bool hasFlier;
+    public bool hasFlier;
     
     
     
@@ -21,7 +21,7 @@ public class NW_BaseVillager : NW_Movement
     void OnEnable()
     {
         //deathZone.OnOutOfBounds += Destroy;
-        //OnFlierHandout += GiveFlier;
+        OnFlierHandout += GiveFlier;
         
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -29,8 +29,8 @@ public class NW_BaseVillager : NW_Movement
     void OnDisable()
     {
         //deathZone.OnOutOfBounds += Destroy;
-        OnFlierHandout?.Invoke();
-        //OnFlierHandout -= GiveFlier;
+        //OnFlierHandout?.Invoke();
+        OnFlierHandout -= GiveFlier;
     }
 
     // Update is called once per frame
@@ -55,14 +55,18 @@ public class NW_BaseVillager : NW_Movement
 
             spriteRenderer.material.color = Color.blue;
             
-            // OnFlierHandout?.Invoke();
-            counter.ScoreCountdown();
+            OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
+            
+            // Debug.Log("There are currently " + counter.fliers + " fliers!" + name);
+            // counter.ScoreCountdown(); (flier count doesn't reset for some reason)
+            
             hasFlier = true;
         }
     }
 
     private void GiveFlier()
     {
+        counter.ScoreCountdown();
         Debug.Log("You handed out a flier.");
     }
     
