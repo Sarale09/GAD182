@@ -8,11 +8,12 @@ public class NW_Counter : MonoBehaviour
 {
     public NW_BaseVillager villager1;
     
-    [SerializeField] private float fliers = 15;
+    public float fliers;
     
     private void OnEnable()
     {
         //villager1.OnFlierHandout += ScoreCountdown;
+        fliers = 15;
         Debug.Log($"You have {fliers} fliers to hand out today.");
     }
 
