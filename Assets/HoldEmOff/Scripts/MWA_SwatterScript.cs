@@ -5,11 +5,21 @@ using UnityEngine;
 public class MWA_SwatterScript : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private Sprite swatSprite; // Sprite for swatting action
+    private Sprite originalSprite; // Store the original sprite
 
     void Start()
     {
         // Get the BoxCollider2D component attached to this GameObject
         boxCollider = GetComponent<BoxCollider2D>();
+
+        // Get the SpriteRenderer component attached to this GameObject
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Store the original sprite at the start
+        originalSprite = spriteRenderer.sprite;
     }
 
     void Update()
@@ -29,6 +39,9 @@ public class MWA_SwatterScript : MonoBehaviour
         // Check if the left mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
+            // Change to the swatting sprite
+            spriteRenderer.sprite = swatSprite;
+
             // Get the center and size of the swatter's BoxCollider2D in world coordinates
             Vector2 boxCenter = (Vector2)transform.position + boxCollider.offset;
             Vector2 boxSize = boxCollider.size;
@@ -40,9 +53,14 @@ public class MWA_SwatterScript : MonoBehaviour
                 if (hitCollider.CompareTag("Insect"))
                 {
                     Destroy(hitCollider.gameObject); // Kill the insect
-                    //break; // Exit after killing the first insect found
                 }
             }
+        }
+
+        // Revert to the original sprite when the LMB is released
+        if (Input.GetMouseButtonUp(0))
+        {
+            spriteRenderer.sprite = originalSprite;
         }
     }
 }
