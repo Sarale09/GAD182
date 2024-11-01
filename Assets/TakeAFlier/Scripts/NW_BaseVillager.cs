@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class NW_BaseVillager : NW_Movement
 {
     // public NW_DeathZone deathZone;
     public NW_Counter counter;
+    public NW_LeftSpawner spawner;
     
     public delegate void SimpleEvent();
     public event SimpleEvent OnFlierHandout;
@@ -20,10 +22,16 @@ public class NW_BaseVillager : NW_Movement
     // Start is called before the first frame update
     void OnEnable()
     {
+        speed = Random.Range(1, 10);
+        
+        counter = FindObjectOfType<NW_Counter>();
+        spawner = FindObjectOfType<NW_LeftSpawner>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
         //deathZone.OnOutOfBounds += Destroy;
         OnFlierHandout += GiveFlier;
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spawner.peopleCount += 1;
     }
 
     void OnDisable()
@@ -31,34 +39,30 @@ public class NW_BaseVillager : NW_Movement
         //deathZone.OnOutOfBounds += Destroy;
         //OnFlierHandout?.Invoke();
         OnFlierHandout -= GiveFlier;
+
+        spawner.peopleCount -= 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveRight();
+
+        if (transform.position.x > 10)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Destroy()
+    public void OnMouseDown()
     {
-        // this.gameObject.SetActive(false);
-        Destroy(gameObject);
-    }
-
-    public void OnMouseOver()
-    {
-        // Debug.Log("Mouse is currently hovering over.");
-        
-        if (Input.GetMouseButtonDown(0) && !hasFlier)
+        if (!hasFlier && counter.fliers > 0)
         {
             Debug.Log("You threw a flier at a villager.");
 
             spriteRenderer.material.color = Color.blue;
             
             OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
-            
-            // Debug.Log("There are currently " + counter.fliers + " fliers!" + name);
-            // counter.ScoreCountdown(); (flier count doesn't reset for some reason)
             
             hasFlier = true;
         }
