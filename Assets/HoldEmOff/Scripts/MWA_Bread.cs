@@ -24,11 +24,10 @@ public class Bread : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    public TextMeshProUGUI gameOverText; // Drag and drop your TextMeshPro element
+    public TextMeshProUGUI gameOverText;
 
     private void Start()
     {
-        // Get the SpriteRenderer component
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateSprite(); // Set the initial sprite based on starting health
     }
@@ -40,7 +39,6 @@ public class Bread : MonoBehaviour
 
         UpdateSprite(); // Update the sprite based on new health
 
-        // Check if health has reached zero
         if (health <= 0)
         {
             health = 0;
@@ -72,7 +70,7 @@ public class Bread : MonoBehaviour
         // Destroy the bread object
         Destroy(gameObject);
 
-        // Destroy the swatter if it exists
+        // Destroy the swatter
         GameObject swatter = GameObject.FindWithTag("Swatter");
         if (swatter != null)
         {

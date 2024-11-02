@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MWA_InsectAIMovementScript : MonoBehaviour
+public class MWA_InsectScript : MonoBehaviour
 {
     [SerializeField]
     private float speed;
