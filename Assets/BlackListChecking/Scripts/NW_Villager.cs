@@ -10,15 +10,12 @@ public class NW_Villager : MonoBehaviour
     public string villagerName;
     public bool isBanned;
     
-    // Start is called before the first frame update
     void OnEnable()
     {
         manager = FindObjectOfType<NW_GameManager>();
         manager.villagerList.Add(gameObject);
         
-        //villagerName = "Scott";
-        
-        villagerName = manager.villagerNameList[manager.randomValue];
+        villagerName = manager.namePlaceholder;
     }
 
     private void OnDisable()
@@ -26,11 +23,8 @@ public class NW_Villager : MonoBehaviour
         manager.villagerList.Remove(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        
         if (manager.blacklist.Contains(villagerName))
         {
             isBanned = true;
