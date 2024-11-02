@@ -5,7 +5,7 @@ public class ChangeCollector : MonoBehaviour
 {
     public Text messageBox; // Displays success or error messages
     [SerializeField]
-    public ChangeCalculator changeCalculator; // Reference to ChangeGenerator script
+    public RandomChangeGenerator changeGenerated; // Reference to ChangeGenerator script
     private float collectedChange; // Tracks the total collected change
 
     void Start()
@@ -21,17 +21,17 @@ public class ChangeCollector : MonoBehaviour
 
     void CheckCollectedChange()
     {
-        if (collectedChange == changeCalculator.requiredChange)
+        if (collectedChange == changeGenerated.requiredChange)
         {
             messageBox.text = "Hurray! Good Job!";
         }
-        else if (collectedChange > changeCalculator.requiredChange)
+        else if (collectedChange > changeGenerated.requiredChange)
         {
             messageBox.text = "Oops! Too much!";
         }
         else
         {
-            messageBox.text = ""; // Clear message if still collecting
+            messageBox.text = ""; // no message if still collecting
         }
     }
 

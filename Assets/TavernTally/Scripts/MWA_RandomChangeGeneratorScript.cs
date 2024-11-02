@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeCalculator : MonoBehaviour
+public class RandomChangeGenerator : MonoBehaviour
 {
     public Text textBox; // Displays the required change
     public float requiredChange;
