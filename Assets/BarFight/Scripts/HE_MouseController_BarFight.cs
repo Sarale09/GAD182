@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HE_MouseController_BarFight : MonoBehaviour
 {
-    public float speed = 15f;
+    public float speed = 10f;
 
     // Start is called before the first frame update
     void Start()
