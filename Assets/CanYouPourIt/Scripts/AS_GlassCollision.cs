@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AS_AleDestroy : MonoBehaviour
+public class AS_GlassCollision : MonoBehaviour
 {
+    public int fullness = 0;
+    public bool isFull = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +15,19 @@ public class AS_AleDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.y < -5.3)
+      if (isFull == false && fullness >= 100)
         {
-            Destroy(this.gameObject);
+            isFull = true;
+            Debug.Log("Full Glass");
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Glass")
+        if (collision.gameObject.tag == "Ale" && isFull == false)
         {
-            Destroy(this.gameObject);
+            Debug.Log("collision");
+            fullness += 25;
         }
     }
 }
