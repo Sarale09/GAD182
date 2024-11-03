@@ -10,13 +10,6 @@ public class AS_Pour : MonoBehaviour
     private Vector3 dropLoc;
     private Coroutine aleDropCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //gets the location of the keg in real time
@@ -32,7 +25,7 @@ public class AS_Pour : MonoBehaviour
     {
         //Coroutine that spawns the ale drops every 0.1 seconds to avoid excess instantiations while space bar is down
 
-        //Debug.Log("New Coroutine Started");   Both logs were created to test multiple coroutines were not being created at the same time
+        //Debug.Log("New Coroutine Started");   Both logs were created to check multiple coroutines were not being created at the same time
         Instantiate(aleDrop, dropLoc, Quaternion.identity);
         yield return new WaitForSeconds(0.1f);
         //Debug.Log("Coroutine Ended");

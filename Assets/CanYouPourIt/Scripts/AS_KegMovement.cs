@@ -8,7 +8,6 @@ public class AS_KegMovement : MonoBehaviour
     protected Vector3 movementDir = new Vector3(10, 0, 0);
     public float smoothness = 0.3f;
 
-    // Update is called once per frame
     void Update()
     {
         //ensures the keg only moves while the game is running
