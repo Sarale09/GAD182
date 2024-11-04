@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HE_TimerScript : MonoBehaviour
 {
-    public 
+    public float timeR = 10f;
+    public float timeEnd = 0f;
+    public TextMeshProUGUI timerUI;
+    
 
 
 
@@ -17,6 +21,12 @@ public class HE_TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timerUI.text = "" + (int)timeR;
+
+        if (timeR > 0)
+        {
+            timeR -= Time.deltaTime;
+
+        }
     }
 }
