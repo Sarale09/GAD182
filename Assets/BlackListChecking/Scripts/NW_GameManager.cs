@@ -32,6 +32,7 @@ public class NW_GameManager : MonoBehaviour
         villagerNameList.Add("Lucy");
         villagerNameList.Add("Misty");
 
+        // Randomize the list of names in villagerNameList by storing them in a different order in a new list.
         while (villagerNameList.Count != 0)
         {
             randomName = villagerNameList[Random.Range(0, villagerNameList.Count)];
@@ -39,6 +40,7 @@ public class NW_GameManager : MonoBehaviour
             villagerNameList.Remove(randomName);
         }
         
+        // Spawns a villager for each name on the list and assign them that name. 
         foreach (var a in randomNameList)
         {
             namePlaceholder = randomNameList[counter];
@@ -53,6 +55,7 @@ public class NW_GameManager : MonoBehaviour
         {
             inConversation = true;
 
+            // Runs coroutine to allow player to accept or reject the villager.
             StartCoroutine(listChecker());
         }
         
@@ -85,6 +88,7 @@ public class NW_GameManager : MonoBehaviour
         bool decisionMade = false;
         while(!decisionMade)
         {
+            // The "Yes" option.
             if(Input.GetKeyDown(KeyCode.Y))
             {
                 Debug.Log("Letting villager in.");
@@ -108,6 +112,7 @@ public class NW_GameManager : MonoBehaviour
                 decisionMade = true;
             }
 
+            // The "No" option.
             if (Input.GetKeyDown(KeyCode.N))
             {
                 Debug.Log("Chasing villager away.");
