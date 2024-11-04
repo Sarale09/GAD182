@@ -8,7 +8,10 @@ public class RandomChangeGenerator : MonoBehaviour
 
     void Start()
     {
-        requiredChange = Random.Range(20, 2001) * 0.05f; // Pick a random change amount between 1.00 and 100.00 in multiples of 5 cents
-        textBox.text = $"Change Needed: ${requiredChange:F2}"; // Display change with two decimal places
+        // Pick a random change amount between 1.00 and 100.00 in multiples of 5 cents
+        requiredChange = Random.Range(20, 2001) * 0.05f;
+
+        // Display change with two decimal places
+        textBox.text = $"Change Needed: ${requiredChange:F2}"; 
     }
 }
