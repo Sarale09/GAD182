@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HE_RepairClick : MonoBehaviour
 {
-    public Material broke;
-    public Material fix;
+    public Color red;
+    public Color blue;
+    public bool isFixed;
+    public List<GameObject> holesPatched = new List<GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Yo");
-        gameObject.GetComponent<MeshRenderer>().material = broke;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+       
 
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-
-                if (hit.collider.tag == "Hole")
-                {
-                    Debug.Log("Hit Register");
-                    this.gameObject.GetComponent<MeshRenderer>().material = fix;
-                }
-               
-            }
-        }
     }
+
+    public void OnMouseDown()
+    {
+        MeshRenderer mR = GetComponent<MeshRenderer>();
+        mR.material.color = blue;
+        holesPatched.Add(gameObject);
+
+
+
+    }
+
 }
