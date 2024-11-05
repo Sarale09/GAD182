@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class HE_TimerScript : MonoBehaviour
 {
-    public float timeR = 10f;
+    public float timeR = 5f;
     public float timeEnd = 0f;
     public TextMeshProUGUI timerUI;
-    
+    public bool timerEnd;
 
 
 
@@ -28,5 +28,16 @@ public class HE_TimerScript : MonoBehaviour
             timeR -= Time.deltaTime;
 
         }
+
+        if (timeR <= 0 )
+        {
+            timerEnd = true;
+        }
+        else
+        {
+            timerEnd = false;
+        }
+
+
     }
 }

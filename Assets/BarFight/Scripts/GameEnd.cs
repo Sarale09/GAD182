@@ -24,7 +24,7 @@ public class GameEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fightState == false && timerS.timeR <= 0)
+        if (fightState == false && timerS.timerEnd == true)
         {
             winEnd.text = "You have stopped the fight";
             cM.speed = 0f;
@@ -42,6 +42,8 @@ public class GameEnd : MonoBehaviour
         {
             winEnd.text = "All Out Brawl";
             fightState = true;
+            cM.speed = 0f;
+            cTM.speed = 0f;
         }
     }
 

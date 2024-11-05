@@ -11,7 +11,7 @@ public class CustomerTwoMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 1.5f;
+        speed = 3.5f;
     }
 
     // Update is called once per frame
