@@ -7,6 +7,7 @@ public class HE_WinConScript : MonoBehaviour
 {
     public HE_RepairClick rC;
     public HE_TimerScript tS;
+    public HE_CountScript cS;
     public TextMeshProUGUI winLoss;
 
 
@@ -19,13 +20,17 @@ public class HE_WinConScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rC.holesPatched.Count >= 6)
-        {
-            rC.isFixed = true;
-        }
-        if (rC.isFixed == true && tS.timerEnd == false)
-        {
-            winLoss.text = "You have fixed the keg";
-        }
+       
+       if(rC.isFixed == true && tS.timerEnd == false)
+       {
+            winLoss.text = "Keg Repaired";
+       }
+       if(tS.timerEnd == true && rC.isFixed != true)
+       {
+            winLoss.text = "You Failed";
+       }
+
+
+
     }
 }
