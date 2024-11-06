@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle
       objectReference: {fileID: 0}
+    - target: {fileID: 2592894885176435168, guid: a6835915ebc341b4792d2a7ade9d6f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6538290247727329310, guid: a6835915ebc341b4792d2a7ade9d6f9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.49
