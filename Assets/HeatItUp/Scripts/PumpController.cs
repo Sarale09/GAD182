@@ -5,6 +5,10 @@ using UnityEngine;
 public class PumpController : MonoBehaviour
 {
     Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public List<Sprite> fireSprites = new List<Sprite>();
+    public int count = 0;
+    public string fireNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +21,14 @@ public class PumpController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.Play("AirPumpAnim 0");
+
+            if (count < 4)
+            {
+                spriteRenderer.sprite = fireSprites[count];
+                count++;
+            }else if (count == 4) {
+                Debug.Log("WIN");
+            }
         }
     }
 }
