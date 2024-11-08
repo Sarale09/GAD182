@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NW_Movement : MonoBehaviour
+public class NW_Movement2 : MonoBehaviour
 {
     public bool direction;
     public float speed;

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class NW_BaseVillager : NW_Movement
+public class NW_BaseVillager : NW_Movement2
 {
     // public NW_DeathZone deathZone;
     public NW_Counter counter;
