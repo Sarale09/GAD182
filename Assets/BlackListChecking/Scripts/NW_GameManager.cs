@@ -74,7 +74,7 @@ public class NW_GameManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         
-        Debug.Log("Do you wish to let them pass?");
+        Debug.Log("Do you wish to let them pass? Press Y for yes or N for no.");
         
         yield return WaitForInput(KeyCode.Space);
         
