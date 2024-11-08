@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NW_DeathZone : MonoBehaviour
 {
-    public GameObject villager;
+    /*public GameObject villager;
     
     //public delegate void SimpleEvent();
     //public event SimpleEvent OnOutOfBounds;
@@ -29,5 +29,5 @@ public class NW_DeathZone : MonoBehaviour
             Destroy(other.gameObject);
             //OnOutOfBounds?.Invoke();
         }
-    }
+    }*/
 }
