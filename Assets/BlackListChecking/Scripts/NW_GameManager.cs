@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NW_GameManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class NW_GameManager : MonoBehaviour
     public int score = 0;
     public bool inConversation;
     public bool gameOver;
+    
+    public float timeR = 30f;
+    public TextMeshProUGUI timerUI;
+    public bool timerEnd;
     
     public GameObject villagerPrefab;
     public NW_Villager villager;
@@ -51,20 +56,51 @@ public class NW_GameManager : MonoBehaviour
 
     void Update()
     {
-        if (villagerList.Count > 0 && !inConversation)
-        {
-            inConversation = true;
+        timerUI.text = "" + (int)timeR;
 
-            // Runs coroutine to allow player to accept or reject the villager.
-            StartCoroutine(listChecker());
+        if (timeR > 0)
+        {
+            timeR -= Time.deltaTime;
+
+        }
+
+        if (timeR <= 0 )
+        {
+            timerEnd = true;
+        }
+        else
+        {
+            timerEnd = false;
+        }
+
+        if (!timerEnd)
+        {
+            if (villagerList.Count > 0 && !inConversation)
+            {
+                inConversation = true;
+
+                // Runs coroutine to allow player to accept or reject the villager.
+                StartCoroutine(listChecker());
+            }
         }
         
-        if (!gameOver && villagerList.Count <= 0)
+        // If there are no more villagers left in line or the timer has run out while the game isn't over.
+        if (!gameOver && (villagerList.Count <= 0 || timerEnd))
         {
+            if (villagerList.Count > 0)
+            {
+                Debug.Log("The villagers in line got impatient and left...");
+            }
             Debug.Log("No more villagers remain in the waiting line.");
             Debug.Log($"Your score is {score}.");
             gameOver = true;
-        }
+
+            // Shuts down timer if game ends early.
+            if (!timerEnd)
+            {
+                timeR = 0f;
+            }
+        } 
     }
 
     private IEnumerator listChecker()
