@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 363, y: 57}
+  m_AnchoredPosition: {x: 350, y: 967}
   m_SizeDelta: {x: 639.688, y: 171.80548}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366281154
@@ -577,6 +577,14 @@ PrefabInstance:
     - target: {fileID: 3745357720626800654, guid: a6d74d252dbd43c4f8c9ea01f912b6aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990660066345929472, guid: a6d74d252dbd43c4f8c9ea01f912b6aa, type: 3}
+      propertyPath: timerUI
+      value: 
+      objectReference: {fileID: 366281154}
+    - target: {fileID: 3990660066345929472, guid: a6d74d252dbd43c4f8c9ea01f912b6aa, type: 3}
+      propertyPath: timeRemain
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
