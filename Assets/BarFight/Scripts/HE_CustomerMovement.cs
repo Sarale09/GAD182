@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerMovement : MonoBehaviour
+public class HE_CustomerMovement : MonoBehaviour
 {
     public GameObject customerOne;
     public Transform customerTwo;

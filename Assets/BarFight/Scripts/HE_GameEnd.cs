@@ -4,13 +4,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameEnd : MonoBehaviour
+public class HE_GameEnd : MonoBehaviour
 {
     public TextMeshProUGUI winEnd;
-    public CustomerMovement cM;
-    public CustomerTwoMove cTM;
+    public HE_CustomerMovement cM;
+    public HE_CustomerTwoMove cTM;
     public bool fightState;
     public HE_TimerScript timerS;
+    public TextMeshProUGUI tutText;
     
 
 
@@ -18,7 +19,7 @@ public class GameEnd : MonoBehaviour
     void Start()
     {
         fightState = false;
-        
+        tutText.text = "Pull Apart";
     }
 
     // Update is called once per frame
