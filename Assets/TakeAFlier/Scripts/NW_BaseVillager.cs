@@ -56,15 +56,18 @@ public class NW_BaseVillager : NW_Movement2
 
     public void OnMouseDown()
     {
-        if (!hasFlier && counter.fliers > 0)
+        if (spawner.timerEnd == false)
         {
-            Debug.Log("You threw a flier at a villager.");
+            if (!hasFlier && counter.fliers > 0)
+            {
+                Debug.Log("You threw a flier at a villager.");
 
-            spriteRenderer.material.color = Color.blue;
+                spriteRenderer.material.color = Color.blue;
             
-            OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
+                OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
             
-            hasFlier = true;
+                hasFlier = true;
+            }
         }
     }
 
