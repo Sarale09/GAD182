@@ -7,7 +7,6 @@ public class HE_WinConScript : MonoBehaviour
 {
     public HE_RepairClick rC;
     public HE_TimerScript tS;
-    public HE_CountScript cS;
     public TextMeshProUGUI winLoss;
 
 
