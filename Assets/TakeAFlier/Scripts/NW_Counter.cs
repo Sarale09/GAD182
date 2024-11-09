@@ -37,7 +37,7 @@ public class NW_Counter : MonoBehaviour
         if (fliers > 0)
         {
             fliers -= 1;
-            Debug.Log($"You have {fliers} fliers remaining. {name}");
+            Debug.Log($"You have {fliers} fliers remaining.");
         }
         
         if (fliers <= 0)
