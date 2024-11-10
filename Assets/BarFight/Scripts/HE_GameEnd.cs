@@ -10,7 +10,7 @@ public class HE_GameEnd : MonoBehaviour
     public HE_CustomerMovement cM;
     public HE_CustomerTwoMove cTM;
     public bool fightState;
-    public HE_TimerScript timerS;
+    public HE_TimerScriptTwo timerS;
     public TextMeshProUGUI tutText;
     
 
