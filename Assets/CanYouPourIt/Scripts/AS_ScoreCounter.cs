@@ -9,7 +9,7 @@ public class AS_ScoreCounter : MonoBehaviour
 
     void Update()
     {
-        if (fullGlasses == 4)
+        if (fullGlasses == 5)
         {
             //Debug.Log("WIN!");
             WinScreen.SetActive(true);
