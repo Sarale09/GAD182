@@ -9,13 +9,15 @@ public class NW_BaseVillager : NW_Movement2
 {
     // public NW_DeathZone deathZone;
     public NW_Counter counter;
-    public NW_LeftSpawner spawner;
+    public NW_Spawner spawner;
     
     public delegate void SimpleEvent();
     public event SimpleEvent OnFlierHandout;
     
     private SpriteRenderer spriteRenderer;
     public bool hasFlier;
+    public bool spawnedLeft;
+    public bool spawnedRight;
     
     
     
@@ -25,13 +27,23 @@ public class NW_BaseVillager : NW_Movement2
         speed = Random.Range(1, 10);
         
         counter = FindObjectOfType<NW_Counter>();
-        spawner = FindObjectOfType<NW_LeftSpawner>();
+        spawner = FindObjectOfType<NW_Spawner>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
         //deathZone.OnOutOfBounds += Destroy;
         OnFlierHandout += GiveFlier;
 
         spawner.peopleCount += 1;
+
+        if (transform.position.x > 10)
+        {
+            spawnedRight = true;
+        }
+        
+        if (transform.position.x < -10)
+        {
+            spawnedLeft = true;
+        }
     }
 
     void OnDisable()
@@ -46,9 +58,17 @@ public class NW_BaseVillager : NW_Movement2
     // Update is called once per frame
     void Update()
     {
-        MoveRight();
+        if (spawnedLeft)
+        {
+            MoveRight();
+        }
+        else if (spawnedRight)
+        {
+            MoveLeft();
+        }
+        
 
-        if (transform.position.x > 10)
+        if (transform.position.x > 12 || transform.position.x < -12)
         {
             Destroy(gameObject);
         }
