@@ -7,13 +7,13 @@ public class AS_Pour : MonoBehaviour
 {
     public GameObject aleDrop;
     public GameObject keg;
-    private Vector3 dropLoc;
+    private Vector2 dropLoc;
     private Coroutine aleDropCoroutine;
 
     void Update()
     {
         //gets the location of the keg in real time
-        dropLoc = keg.transform.position;
+        dropLoc = new Vector2(keg.transform.position.x , 2.95f) ;
         //will start a coroutine that controls the timing of the ale drops while space bar is down.
         if (Input.GetKey(KeyCode.Space) && aleDropCoroutine == null)
         {
