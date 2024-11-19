@@ -18,7 +18,9 @@ public class NW_Spawner : MonoBehaviour
     public float timeRemain = 50f;
     public TextMeshProUGUI timerUI;
     public TextMeshProUGUI resultText;
+    public TextMeshProUGUI flierCountText;
     public GameObject resultScreen;
+    public GameObject timerCanvas;
     public bool timerEnd;
 
     public bool gameEnded;
@@ -39,10 +41,10 @@ public class NW_Spawner : MonoBehaviour
     void Update()
     {
         randomNumber = Random.Range(0, 2);
-        
         spawnInterval = Random.Range(0, 3);
-        
+
         timerUI.text = "" + (int)timeRemain;
+        flierCountText.text = "Fliers remaining: " + (int)counter.fliers;
 
         if (timeRemain > 0)
         {
@@ -54,6 +56,7 @@ public class NW_Spawner : MonoBehaviour
         {
             timerEnd = true;
             resultScreen.SetActive(true);
+            timerCanvas.SetActive(false);
         }
         else
         {
@@ -75,6 +78,7 @@ public class NW_Spawner : MonoBehaviour
         if ((timerEnd || counter.fliers <= 0) && !gameEnded)
         {
             Debug.Log("The time is up.");
+            timerCanvas.SetActive(false);
 
             if (counter.fliers == 0)
             {
