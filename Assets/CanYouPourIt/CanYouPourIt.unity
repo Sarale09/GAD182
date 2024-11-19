@@ -254,6 +254,7 @@ MonoBehaviour:
   aleDrop: {fileID: 3749055003677262238, guid: 20166017feb45a244bc975a91bf35e44, type: 3}
   keg: {fileID: 122339615}
   timerScript: {fileID: 264558986}
+  dropCount: 0
 --- !u!4 &264558984
 Transform:
   m_ObjectHideFlags: 0
@@ -997,14 +998,14 @@ RectTransform:
   m_GameObject: {fileID: 1272212198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4331, y: 1.4331, z: 1.4331}
+  m_LocalScale: {x: 2.3325136, y: 2.3325136, z: 2.3325136}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 490843569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161, y: -60}
+  m_AnchoredPosition: {x: 248, y: -70}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272212200
