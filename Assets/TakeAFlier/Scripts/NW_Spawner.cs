@@ -17,6 +17,8 @@ public class NW_Spawner : MonoBehaviour
     
     public float timeRemain = 50f;
     public TextMeshProUGUI timerUI;
+    public TextMeshProUGUI resultText;
+    public GameObject resultScreen;
     public bool timerEnd;
 
     public bool gameEnded;
@@ -24,6 +26,7 @@ public class NW_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        resultScreen.SetActive(false);
         counter = FindObjectOfType<NW_Counter>();
         
         villager1SpawnPoints.Add(new Vector2(-10.5f, 0));
@@ -50,6 +53,7 @@ public class NW_Spawner : MonoBehaviour
         if (timeRemain <= 0 )
         {
             timerEnd = true;
+            resultScreen.SetActive(true);
         }
         else
         {
@@ -76,6 +80,9 @@ public class NW_Spawner : MonoBehaviour
             {
                 Debug.Log("You handed out all the fliers in time!");
                 Debug.Log("You win!");
+
+                resultText.text = "You handed out all the fliers in time! You win!";
+                
                 gameEnded = true;
                 timeRemain = 0f;
             }
@@ -83,6 +90,9 @@ public class NW_Spawner : MonoBehaviour
             {
                 Debug.Log("You failed to hand out all the fliers in time...");
                 Debug.Log("You failed.");
+                
+                resultText.text = "You failed to hand out all the fliers in time. You lose.";
+                
                 gameEnded = true;
             }
         }
