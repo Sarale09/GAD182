@@ -5,7 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Main Menu/Main Menu.unity
+    guid: d733c8cc6f0db7d4387022bafb9ce3e0
+  - enabled: 1
+    path: Assets/CanYouPourIt/CanYouPourIt.unity
+    guid: 027209015b2caf54780e2563689df93c
+  - enabled: 1
+    path: Assets/BarFight/BarFight.unity
+    guid: 84eea2449b6dead419e3ac85acef1c5f
+  - enabled: 1
+    path: Assets/BlackListChecking/BlacklistCheck.unity
+    guid: 4c7f9f2eca5ccf04ba668e922799a93b
+  - enabled: 1
+    path: Assets/HeatItUp/HeatItUp.unity
+    guid: daa129efdf37a4a44a19decce92b13b8
+  - enabled: 1
+    path: Assets/HoldEmOff/HoldEmOff.unity
+    guid: ae549a3d6589d2544926919c283217f6
+  - enabled: 1
+    path: Assets/KegRepair/KegRepair.unity
+    guid: fbda2a2db1718004684921221745adb3
+  - enabled: 1
+    path: Assets/TakeAFlier/TakeAFlier.unity
+    guid: 70f855e32e6446c4fa1fa277cb25253d
   m_configObjects: {}
