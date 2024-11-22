@@ -23,6 +23,10 @@ public class NW_GameManager : MonoBehaviour
     
     public GameObject villagerPrefab;
     public NW_Villager villager;
+
+    public TextMeshProUGUI gameText;
+    public TextMeshProUGUI listedName1;
+    public TextMeshProUGUI listedName2;
     
     void Start()
     {
@@ -30,6 +34,9 @@ public class NW_GameManager : MonoBehaviour
         
         blacklist.Add("Scott");
         blacklist.Add("Tom");
+        
+        listedName1.text = "- Scott";
+        listedName2.text = "- Tom";
         
         villagerNameList.Add("Scott");
         villagerNameList.Add("Robert");
@@ -87,19 +94,7 @@ public class NW_GameManager : MonoBehaviour
         // If there are no more villagers left in line or the timer has run out while the game isn't over.
         if (!gameOver && (villagerList.Count <= 0 || timerEnd))
         {
-            if (villagerList.Count > 0)
-            {
-                Debug.Log("The villagers in line got impatient and left...");
-            }
-            Debug.Log("No more villagers remain in the waiting line.");
-            Debug.Log($"Your score is {score}.");
-            gameOver = true;
-
-            // Shuts down timer if game ends early.
-            if (!timerEnd)
-            {
-                timeR = 0f;
-            }
+            StartCoroutine(gameEnder());
         } 
     }
 
@@ -107,10 +102,12 @@ public class NW_GameManager : MonoBehaviour
     {
         villager = FindObjectOfType<NW_Villager>();
         Debug.Log("This villager's name is " + villager.villagerName);
+        gameText.text = "This villager's name is " + villager.villagerName + ".";
         
         yield return new WaitForSeconds(0.5f);
         
         Debug.Log("Do you wish to let them pass? Press Y for yes or N for no.");
+        gameText.text = "This villager's name is " + villager.villagerName + ".\nDo you wish to let them pass? Press Y for yes or N for no.";
         
         yield return WaitForInput(KeyCode.Space);
         
@@ -127,23 +124,44 @@ public class NW_GameManager : MonoBehaviour
             // The "Yes" option.
             if(Input.GetKeyDown(KeyCode.Y))
             {
-                Debug.Log("Letting villager in.");
+                Debug.Log("Letting villager in...");
+                gameText.text = "Letting villager in.";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Letting villager in..";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Letting villager in...";
                 
                 yield return new WaitForSeconds(1f);
                 
                 if (villager.isBanned)
                 {
                     Debug.Log("This villager is banned. Wrong choice.");
+                    gameText.text = "This villager is banned. Wrong choice.";
+                    
+                    if (villager.villagerName == "Scott")
+                    {
+                        listedName1.text = "- <color=#BA3838>Scott</color>";
+                    }
+
+                    if (villager.villagerName == "Tom")
+                    {
+                        listedName2.text = "- <color=#BA3838>Tom</color>";
+                    }
                 }
                 else
                 {
                     Debug.Log("This villager passed the security check.");
+                    gameText.text = "This villager passed the security check.";
                     score += 1;
                 }
                 
                 Destroy(villager.gameObject);
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
             }
@@ -152,27 +170,75 @@ public class NW_GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.N))
             {
                 Debug.Log("Chasing villager away.");
+                gameText.text = "Chasing villager away.";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Chasing villager away..";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Chasing villager away...";
+                
+                yield return new WaitForSeconds(1f);
 
                 yield return new WaitForSeconds(1f);
                 
                 if (!villager.isBanned)
                 {
                     Debug.Log("This villager is innocent. You chased away a potential customer.");
+                    gameText.text = "This villager is innocent. You chased away a potential customer.";
                 }
                 else
                 {
                     Debug.Log("You chased away a potential criminal.");
+                    gameText.text = "You chased away a potential criminal.";
                     score += 1;
+                    
+                    if (villager.villagerName == "Scott")
+                    {
+                        listedName1.text = "- <color=#B1B1B1><s>Scott</s></color>";
+                    }
+
+                    if (villager.villagerName == "Tom")
+                    {
+                        listedName2.text = "- <color=#B1B1B1><s>Tom</s></color>";
+                    }
                 }
                 
                 Destroy(villager.gameObject);
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
             }
             
             yield return null; 
+        }
+    }
+
+    private IEnumerator gameEnder()
+    {
+        if (villagerList.Count > 0)
+        {
+            Debug.Log("The villagers in line got impatient and left...");
+            gameText.text = "The villagers in line got impatient and left...";
+            
+            yield return new WaitForSeconds(2f);
+        }
+        Debug.Log("No more villagers remain in the waiting line.");
+        gameText.text = "No more villagers remain in the waiting line.";
+        
+        yield return new WaitForSeconds(.5f);
+        
+        Debug.Log($"Your score is {score}.");
+        gameText.text = "No more villagers remain in the waiting line.\nYour score is " + score + ".";
+        gameOver = true;
+
+        // Shuts down timer if game ends early.
+        if (!timerEnd)
+        {
+            timeR = 0f;
         }
     }
 }
