@@ -15,6 +15,7 @@ public class NW_BaseVillager : NW_Movement2
     public event SimpleEvent OnFlierHandout;
     
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite flierSprite;
     public bool hasFlier;
     public bool spawnedLeft;
     public bool spawnedRight;
@@ -64,6 +65,7 @@ public class NW_BaseVillager : NW_Movement2
         }
         else if (spawnedRight)
         {
+            spriteRenderer.flipX = true;
             MoveLeft();
         }
         
@@ -82,7 +84,8 @@ public class NW_BaseVillager : NW_Movement2
             {
                 Debug.Log("You threw a flier at a villager.");
 
-                spriteRenderer.material.color = Color.blue;
+                // spriteRenderer.material.color = Color.blue;
+                spriteRenderer.sprite = flierSprite;
             
                 OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
             

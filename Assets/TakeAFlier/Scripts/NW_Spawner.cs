@@ -31,8 +31,10 @@ public class NW_Spawner : MonoBehaviour
         resultScreen.SetActive(false);
         counter = FindObjectOfType<NW_Counter>();
         
-        villager1SpawnPoints.Add(new Vector2(-10.5f, 0));
-        villager1SpawnPoints.Add(new Vector2(10.5f, 0));
+        villager1SpawnPoints.Add(new Vector2(-10.5f, -0.5f));
+        villager1SpawnPoints.Add(new Vector2(-10.5f, -1));
+        villager1SpawnPoints.Add(new Vector2(10.5f, -0.5f));
+        villager1SpawnPoints.Add(new Vector2(10.5f, -1));
 
         //Instantiate(villager1, new Vector2(-10.5f, 0), Quaternion.identity);
     }
@@ -40,7 +42,7 @@ public class NW_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        randomNumber = Random.Range(0, 2);
+        randomNumber = Random.Range(0, 5);
         spawnInterval = Random.Range(0, 3);
 
         timerUI.text = "" + (int)timeRemain;
