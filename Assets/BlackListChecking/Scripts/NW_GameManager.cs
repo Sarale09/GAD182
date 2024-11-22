@@ -9,6 +9,7 @@ public class NW_GameManager : MonoBehaviour
     public List<string> randomNameList;
     public List<string> blacklist;
     public List<GameObject> villagerList;
+    private List<Vector2> positions = new List<Vector2>();
 
     public string namePlaceholder;
     public string randomName;
@@ -22,6 +23,7 @@ public class NW_GameManager : MonoBehaviour
     public bool timerEnd;
     
     public GameObject villagerPrefab;
+    public NW_Villager firstInLine;
     public NW_Villager villager;
 
     public TextMeshProUGUI gameText;
@@ -43,6 +45,12 @@ public class NW_GameManager : MonoBehaviour
         villagerNameList.Add("Tom");
         villagerNameList.Add("Lucy");
         villagerNameList.Add("Misty");
+        
+        positions.Add(new Vector2(-6, 0.5f));
+        positions.Add(new Vector2(-4.5f, 0.5f));
+        positions.Add(new Vector2(-3, 0.5f));
+        positions.Add(new Vector2(-1.5f, 0.5f));
+        positions.Add(new Vector2(0, 0.5f));
 
         // Randomize the list of names in villagerNameList by storing them in a different order in a new list.
         while (villagerNameList.Count != 0)
@@ -53,12 +61,14 @@ public class NW_GameManager : MonoBehaviour
         }
         
         // Spawns a villager for each name on the list and assign them that name. 
-        foreach (var a in randomNameList)
+        for (int i = 0; i < randomNameList.Count; i++)
         {
             namePlaceholder = randomNameList[counter];
-            Instantiate(villagerPrefab);
+            Instantiate(villagerPrefab, positions[i], Quaternion.identity);
             counter += 1;
         }
+
+        counter = 0;
     }
 
     void Update()
@@ -101,6 +111,7 @@ public class NW_GameManager : MonoBehaviour
     private IEnumerator listChecker()
     {
         villager = FindObjectOfType<NW_Villager>();
+        firstInLine = villager;
         Debug.Log("This villager's name is " + villager.villagerName);
         gameText.text = "This villager's name is " + villager.villagerName + ".";
         
@@ -161,6 +172,14 @@ public class NW_GameManager : MonoBehaviour
                 
                 Destroy(villager.gameObject);
                 
+                yield return new WaitForSeconds(0.5f);
+                
+                foreach (GameObject villager in villagerList)
+                {
+                    // yield return new WaitForSeconds(0.2f);
+                    villager.transform.position = new Vector2(villager.transform.position.x + 1.5f, villager.transform.position.y);
+                }
+                
                 yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
@@ -208,6 +227,14 @@ public class NW_GameManager : MonoBehaviour
                 
                 Destroy(villager.gameObject);
                 
+                yield return new WaitForSeconds(0.5f);
+                
+                foreach (GameObject villager in villagerList)
+                {
+                    // yield return new WaitForSeconds(0.2f);
+                    villager.transform.position = new Vector2(villager.transform.position.x + 1.5f, villager.transform.position.y);
+                }
+                
                 yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
@@ -215,6 +242,39 @@ public class NW_GameManager : MonoBehaviour
             
             yield return null; 
         }
+    }
+    
+    // gets the index number of a villager's position.
+    private int GetNextPosition(int iteration)
+    {
+        int current = GetVillagerIndex() + iteration;
+
+        if (current >= randomNameList.Count)
+        {
+            current = 0;
+        }
+        else if (current < 0)
+        {
+            current = randomNameList.Count - 1;
+        }
+
+        return current;
+
+    }
+    
+    // gets the index number of a villager.
+    private int GetVillagerIndex()
+    {
+        for (int i = 0; i < randomNameList.Count; i++)
+        {
+            if (firstInLine.villagerName == randomNameList[i])
+            {
+                return i;
+            }
+        }
+        // we couldnt find the name in the list
+        Debug.Log("Name not found, returning 0");
+        return 0;
     }
 
     private IEnumerator gameEnder()

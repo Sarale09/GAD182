@@ -8,6 +8,8 @@ public class NW_Movement : MonoBehaviour
     public bool inPosition;
     public bool isChecked;
     
+    
+    
     void Start()
     {
         
