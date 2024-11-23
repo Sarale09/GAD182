@@ -5,13 +5,18 @@ using UnityEngine;
 public class MWA_SwatterScript : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
+    
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioSource swatAudioSource;
+
     [SerializeField] private Sprite swatSprite; // Sprite for swatting action
+    
     private Sprite originalSprite; // Store the original sprite
 
     void Start()
     {
+        Cursor.visible = false;
         // Get the BoxCollider2D component attached to this GameObject
         boxCollider = GetComponent<BoxCollider2D>();
 
@@ -41,7 +46,7 @@ public class MWA_SwatterScript : MonoBehaviour
         {
             // Change to the swatting sprite
             spriteRenderer.sprite = swatSprite;
-
+            swatAudioSource.Play();
             // Get the center and size of the swatter's BoxCollider2D in world coordinates
             Vector2 boxCenter = (Vector2)transform.position + boxCollider.offset;
             Vector2 boxSize = boxCollider.size;
@@ -52,7 +57,11 @@ public class MWA_SwatterScript : MonoBehaviour
             {
                 if (hitCollider.CompareTag("Insect"))
                 {
-                    Destroy(hitCollider.gameObject); // Kill the insect
+                    MWA_InsectScript insect = hitCollider.GetComponent<MWA_InsectScript>();
+                    if (insect != null)
+                    {
+                        insect.Die(); // Call the Die method on the insect
+                    }
                 }
             }
         }

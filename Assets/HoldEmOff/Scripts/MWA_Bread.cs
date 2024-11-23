@@ -11,13 +11,23 @@ public class Bread : MonoBehaviour
     [SerializeField]
     private Sprite fullBreadSprite;
     [SerializeField]
-    private Sprite fourOutOfFiveBreadSprite;
+    private Sprite ninetyPercentBreadSprite;
     [SerializeField]
-    private Sprite threeOutOfFiveBreadSprite;
+    private Sprite eightyPercentBreadSprite;
     [SerializeField]
-    private Sprite twoOutOfFiveBreadSprite;
+    private Sprite seventyPercentBreadSprite;
     [SerializeField]
-    private Sprite oneOutOfFiveBreadSprite;
+    private Sprite sixtyPercentBreadSprite;
+    [SerializeField]
+    private Sprite fiftyPercentBreadSprite;
+    [SerializeField]
+    private Sprite fortyPercentBreadSprite;
+    [SerializeField]
+    private Sprite thirtyPercentBreadSprite;
+    [SerializeField]
+    private Sprite twentyPercentBreadSprite;
+    [SerializeField]
+    private Sprite tenPercentBreadSprite;
 
     private SpriteRenderer spriteRenderer;
 
@@ -27,6 +37,11 @@ public class Bread : MonoBehaviour
 
     private float timeRemaining = 60f; // 60-second timer
     private bool gameEnded = false;
+
+    public AudioClip audioClip1; // Assign in the inspector
+    public AudioClip audioClip2; // Assign in the inspector
+    public AudioSource audioSource; // Assign an AudioSource component in the inspector
+    private bool playFirstClip = true; // Flag to alternate clips
 
     private void Start()
     {
@@ -48,7 +63,17 @@ public class Bread : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            timerText.text = "Time remaining: " + Mathf.CeilToInt(timeRemaining).ToString() + " sec";
+            if (Mathf.FloorToInt(timeRemaining) % 2 == 1 && playFirstClip) // Alternate on odd seconds
+            {
+                PlayClip(audioClip1);
+                playFirstClip = false;
+            }
+            else if (Mathf.FloorToInt(timeRemaining) % 2 == 0 && !playFirstClip) // Alternate on even seconds
+            {
+                PlayClip(audioClip2);
+                playFirstClip = true;
+            }
+            timerText.text = Mathf.CeilToInt(timeRemaining).ToString();
         }
         else
         {
@@ -63,7 +88,12 @@ public class Bread : MonoBehaviour
             }
         }
     }
-
+    private void PlayClip(AudioClip clip)
+    {
+        if (audioSource.isPlaying) return; // Prevent overlapping
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
     // Method to reduce health
     public void ReduceHealth(int amount)
     {
@@ -83,14 +113,24 @@ public class Bread : MonoBehaviour
     // Method to update the bread sprite based on health
     private void UpdateSprite()
     {
-        if (health <= 80 && health >= 61)
-            spriteRenderer.sprite = fourOutOfFiveBreadSprite;
-        else if (health <= 60 && health >= 41)
-            spriteRenderer.sprite = threeOutOfFiveBreadSprite;
-        else if (health <= 40 && health >= 21)
-            spriteRenderer.sprite = twoOutOfFiveBreadSprite;
-        else if (health <= 20 && health >= 1)
-            spriteRenderer.sprite = oneOutOfFiveBreadSprite;
+        if (health <= 90 && health >= 81)
+            spriteRenderer.sprite = ninetyPercentBreadSprite;
+        else if (health <= 80 && health >= 71)
+            spriteRenderer.sprite = eightyPercentBreadSprite;
+        else if (health <= 70 && health >= 61)
+            spriteRenderer.sprite = seventyPercentBreadSprite;
+        else if (health <= 60 && health >= 51)
+            spriteRenderer.sprite = sixtyPercentBreadSprite;
+        else if (health <= 50 && health >= 41)
+            spriteRenderer.sprite = fiftyPercentBreadSprite;
+        else if (health <= 40 && health >= 31)
+            spriteRenderer.sprite = fortyPercentBreadSprite;
+        else if (health <= 30 && health >= 21)
+            spriteRenderer.sprite = thirtyPercentBreadSprite;
+        else if (health <= 20 && health >= 11)
+            spriteRenderer.sprite = twentyPercentBreadSprite;
+        else if (health <= 10 && health >= 1)
+            spriteRenderer.sprite = tenPercentBreadSprite;
         else
             spriteRenderer.sprite = fullBreadSprite;
     }
