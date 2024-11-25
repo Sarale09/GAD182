@@ -11,6 +11,12 @@ public class AS_Pour : MonoBehaviour
     private Coroutine aleDropCoroutine;
     public AS_TimerScript timerScript;
     public int dropCount;
+    private AudioSource pourSound;
+
+    private void Start()
+    {
+        pourSound = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -19,6 +25,7 @@ public class AS_Pour : MonoBehaviour
         //will start a coroutine that controls the timing of the ale drops while space bar is down.
         if (Input.GetKey(KeyCode.Space) && aleDropCoroutine == null && timerScript.timerEnd == false && dropCount <= 40)
         {
+            pourSound.Play();
             aleDropCoroutine = StartCoroutine(aleDropTiming());
             dropCount++;
         }

@@ -7,7 +7,12 @@ public class AS_GlassCollision : MonoBehaviour
     public int fullness = 0;
     public bool isFull = false;
     public List<Sprite> sprites = new List<Sprite>();
+    private AudioSource dropletSound;
 
+    private void Start()
+    {
+        dropletSound = GetComponent<AudioSource>();
+    }
     void Update()
     {
     //sets the glass to full once it reaches 100
@@ -25,6 +30,7 @@ public class AS_GlassCollision : MonoBehaviour
         //only allows adding to fullness if the glass is not full yet
         if (collision.gameObject.tag == "Ale" && isFull == false )
         {
+            dropletSound.Play();
             //Debug.Log("collision");
             fullness ++;
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[fullness];
