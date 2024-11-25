@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HE_TimerScript : MonoBehaviour
+public class AS_Timer2 : MonoBehaviour
 {
     public float timeR = 10f;
     public float timeEnd = 0f;
