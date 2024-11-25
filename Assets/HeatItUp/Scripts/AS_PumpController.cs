@@ -8,6 +8,7 @@ public class PumpController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public List<Sprite> fireSprites = new List<Sprite>();
     public int count = 0;
+    public int spriteNum = 0;
     public string fireNum;
     // Start is called before the first frame update
     void Start()
@@ -15,20 +16,36 @@ public class PumpController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //updates sprites at different intervals when space is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.Play("AirPumpAnim 0");
 
-            if (count < 4)
+            switch (count)
             {
-                spriteRenderer.sprite = fireSprites[count];
-                count++;
-            }else if (count == 4) {
-                Debug.Log("WIN");
+                case 0:
+                    UpdateSprites(); break;
+                case 2:
+                    UpdateSprites(); break;
+                case 5:
+                    UpdateSprites(); break;
+                case 9:
+                    UpdateSprites(); break;
+                default:
+                    count++;
+                    break;
             }
+
         }
+    }
+
+    void UpdateSprites()
+    {
+        //function that updates sprite, count, and sprite num
+        count++;
+        spriteRenderer.sprite = fireSprites[spriteNum];
+        spriteNum++;
     }
 }
