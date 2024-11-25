@@ -23,9 +23,9 @@ public class AS_GlassCollision : MonoBehaviour
     {
         //adds to fullness if the ale drop hits the glass
         //only allows adding to fullness if the glass is not full yet
-        if (collision.gameObject.tag == "Ale" && isFull == false)
+        if (collision.gameObject.tag == "Ale" && isFull == false )
         {
-            Debug.Log("collision");
+            //Debug.Log("collision");
             fullness ++;
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[fullness];
         }
