@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ public class AS_Pour : MonoBehaviour
     private Vector2 dropLoc;
     private Coroutine aleDropCoroutine;
     public AS_TimerScript timerScript;
-    public int dropCount;
+    public TMP_Text dropCountText;
+    public int dropCount = 40;
     private AudioSource pourSound;
 
     private void Start()
@@ -20,14 +22,15 @@ public class AS_Pour : MonoBehaviour
 
     void Update()
     {
+        dropCountText.text = dropCount.ToString();
         //gets the location of the keg in real time
         dropLoc = new Vector2(keg.transform.position.x , 2.95f) ;
         //will start a coroutine that controls the timing of the ale drops while space bar is down.
-        if (Input.GetKey(KeyCode.Space) && aleDropCoroutine == null && timerScript.timerEnd == false && dropCount <= 40)
+        if (Input.GetKey(KeyCode.Space) && aleDropCoroutine == null && timerScript.timerEnd == false && dropCount > 0)
         {
             pourSound.Play();
             aleDropCoroutine = StartCoroutine(aleDropTiming());
-            dropCount++;
+            dropCount --;
         }
     }
 
