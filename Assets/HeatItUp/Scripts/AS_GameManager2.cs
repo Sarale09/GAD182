@@ -7,10 +7,16 @@ public class AS_GameManager2 : MonoBehaviour
 {
     public GameObject pump;
     public GameObject winCanvas;
+    public GameObject cauldron;
+    private AudioSource boilingSound;
     public TextMeshProUGUI winText;
     public AS_Timer2 timerScript;
     private int counter;
-  
+
+    private void Start()
+    {
+        boilingSound = cauldron.GetComponent<AudioSource>();
+    }
     void Update()
     {
         counter = pump.GetComponent<PumpController>().count;
@@ -23,6 +29,11 @@ public class AS_GameManager2 : MonoBehaviour
             //if time runs out
             winText.text = "Need cooking lessons?";
             winCanvas.SetActive(true);
+        }
+
+        if (counter == 5)
+        {
+            boilingSound.Play();
         }
     }
 }

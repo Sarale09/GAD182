@@ -10,19 +10,24 @@ public class PumpController : MonoBehaviour
     public int count = 0;
     public int spriteNum = 0;
     public string fireNum;
+    private AudioSource pumpSound;
     // Start is called before the first frame update
     void Start()
     {
+        pumpSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        //updates sprites at different intervals when space is pressed
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //Plays animation and sound
             animator.Play("AirPumpAnim 0");
+            pumpSound.Play();
 
+            //updates sprites at different intervals when space is pressed
             switch (count)
             {
                 case 0:
