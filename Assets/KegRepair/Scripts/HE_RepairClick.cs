@@ -7,8 +7,8 @@ using UnityEngine.Rendering;
 
 public class HE_RepairClick : MonoBehaviour
 {
-    public Color red;
-    public Color blue;
+    public SpriteRenderer sR;
+    public Sprite patched;
     public bool isFixed;
     public HE_WinConScript wN;
     public static int endState = 0;
@@ -35,8 +35,8 @@ public class HE_RepairClick : MonoBehaviour
     public void OnMouseDown()
     {
         endState++;
-        MeshRenderer mR = GetComponent<MeshRenderer>();
-        mR.material.color = blue;
+        sR.sprite = patched;
+        
         Debug.Log(endState);
 
 
