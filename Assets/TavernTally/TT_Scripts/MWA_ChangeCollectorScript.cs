@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class ChangeCollector : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class ChangeCollector : MonoBehaviour
 
             timerEnded = true; // Stop timer if player wins
 
+            GameManager.Instance.gamesWon++;
+
             StartCoroutine(MoveVillagerOutOfScene(TT_villager, 4f));
         }
         else if (collectedChange > requiredChange)
@@ -86,6 +89,8 @@ public class ChangeCollector : MonoBehaviour
             VoicelineAudioSource.Play();
 
             timerEnded = true;
+
+            GameManager.Instance.gamesLost++;
 
             StartCoroutine(MoveVillagerOutOfScene(TT_villager, 6f));
         }
@@ -127,10 +132,14 @@ public class ChangeCollector : MonoBehaviour
 
         // Trigger camera shake
         Camera.main.GetComponent<CameraShake>()?.StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.13f, 0.2f));
+
+        GameManager.Instance.gamesLost++;
+
+        
     }
 
 
-    // Function to alternate between tick sounds every second based on the timer
+    // Function to alternate between tick sounds every second
     private void PlayTickSound()
     {
         // Check if a whole second has passed by comparing the floored time remaining
