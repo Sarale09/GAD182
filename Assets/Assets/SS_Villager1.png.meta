@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 918cc2b0b8a58f549b4d5cfce1b0cddd
+guid: 363862c02ce409e44b335fe7fa4fc236
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,18 +95,62 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SS_Villager1_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 30
+        width: 440
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09833d2e592494a4ab62cfccf1865489
+      internalID: -824187040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Villager1_1
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 30
+        width: 444
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa88c8101759acb4fa6ec9e9e737899b
+      internalID: -58323514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SS_Villager1_0: -824187040
+      SS_Villager1_1: -58323514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
