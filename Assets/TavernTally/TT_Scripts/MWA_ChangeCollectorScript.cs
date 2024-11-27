@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections;
 
 public class ChangeCollector : MonoBehaviour
 {
-    public Text timerText; // Displays remaining time
+    public TextMeshProUGUI timerText; // Displays remaining time
 
     [SerializeField] public RandomChangeGenerator changeGenerated; // Reference to ChangeGenerator script
 
@@ -22,6 +24,15 @@ public class ChangeCollector : MonoBehaviour
     private bool timerEnded;
     private bool playFirstTickSound = true; // Boolean to alternate between tick sounds
     private float lastTickTime = -1f; // Tracks the last second when a tick sound was played
+
+    [SerializeField] private GameObject TT_villager; 
+    [SerializeField] private Sprite happyVillagerSprite;
+    [SerializeField] private Sprite angryVillagerSprite;
+    [SerializeField] private Sprite maliciousVillagerSprite;
+    [SerializeField] private Sprite neutralVillagerSprite;
+    [SerializeField] private SpriteRenderer TT_villagerSpriteRenderer; // Reference to the SpriteRenderer
+
+    [SerializeField] private GameObject owner;
 
     void Start()
     {
@@ -45,46 +56,56 @@ public class ChangeCollector : MonoBehaviour
         // Add the change, and round to 2 decimal places
         collectedChange += amount;
         collectedChange = Mathf.Round(collectedChange * 100f) / 100f;  // Round to 2 decimal places
-        Debug.Log("Added change: " + amount + ", Total collected: " + collectedChange);
         CheckCollectedChange();
     }
 
-    void CheckCollectedChange()
+    private void CheckCollectedChange()
     {
-        // Round the required change to 2 decimal places for comparison
         float requiredChange = Mathf.Round(changeGenerated.requiredChange * 100f) / 100f;  // Round to 2 decimal places
 
         if (collectedChange == requiredChange)
         {
-            // Play happy customer sound if collected change matches required change
+            TT_villagerSpriteRenderer.sprite = happyVillagerSprite; // Switch to happy sprite
+
+            // Play happy customer sound
             VoicelineAudioSource.clip = happyCustomerAudio;
             VoicelineAudioSource.Play();
+
             timerEnded = true; // Stop timer if player wins
+
+            StartCoroutine(MoveVillagerOutOfScene(TT_villager, 4f));
         }
         else if (collectedChange > requiredChange)
         {
-            // Play angry boss sound if collected change exceeds required change
+            owner.SetActive(true);
+
+            TT_villagerSpriteRenderer.sprite = maliciousVillagerSprite; // Switch to malicious sprite
+
+            // Play angry boss sound
             VoicelineAudioSource.clip = angryBossAudio;
             VoicelineAudioSource.Play();
-            timerEnded = true; // Stop timer if player has overchanged
+
+            timerEnded = true;
+
+            StartCoroutine(MoveVillagerOutOfScene(TT_villager, 6f));
         }
         else
         {
-            // Do nothing if still collecting change
         }
     }
 
-    void ResetCollectedChange()
+
+    private void ResetCollectedChange()
     {
         collectedChange = 0;
     }
 
-    void UpdateTimer()
+    private void UpdateTimer()
     {
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;  // Decrease time by frame time (no rounding here)
-            timerText.text = timeRemaining.ToString("F2"); // Display remaining time with 2 decimal places
+            timerText.text = Mathf.FloorToInt(timeRemaining).ToString(); // Display remaining time as a whole number
         }
         else if (!timerEnded) // End game only if not already won
         {
@@ -93,16 +114,24 @@ public class ChangeCollector : MonoBehaviour
         }
     }
 
-    void EndGame()
+    private void EndGame()
     {
         timerText.text = "";
+
         // Play angry customer sound when time runs out
         VoicelineAudioSource.clip = angryCustomerAudio;
         VoicelineAudioSource.Play();
+
+        // change customer sprite to angry
+        TT_villagerSpriteRenderer.sprite = angryVillagerSprite;
+
+        // Trigger camera shake
+        Camera.main.GetComponent<CameraShake>()?.StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.13f, 0.2f));
     }
 
+
     // Function to alternate between tick sounds every second based on the timer
-    void PlayTickSound()
+    private void PlayTickSound()
     {
         // Check if a whole second has passed by comparing the floored time remaining
         float currentTime = Mathf.Floor(timeRemaining);
@@ -129,4 +158,19 @@ public class ChangeCollector : MonoBehaviour
             lastTickTime = currentTime;
         }
     }
+
+    private IEnumerator MoveVillagerOutOfScene(GameObject villager, float speed)
+    {
+        while (villager.transform.position.x < 30)
+        {
+            // Move the villager to the right
+            villager.transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+            yield return null; // Wait for the next frame
+        }
+
+        // Optionally, disable the villager after they leave the screen
+        TT_villager.SetActive(false);
+    }
+
 }
