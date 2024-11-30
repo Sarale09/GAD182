@@ -32,21 +32,24 @@ public class Bread : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
+    public TextMeshProUGUI gameWinText;
     public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI timerText; // UI text to display the timer
+    public TextMeshProUGUI timerText;
+    public Button backToMenuBtn;
 
-    private float timeRemaining = 60f; // 60-second timer
+    private float timeRemaining = 60f;
     private bool gameEnded = false;
 
-    public AudioClip audioClip1; // Assign in the inspector
-    public AudioClip audioClip2; // Assign in the inspector
-    public AudioSource audioSource; // Assign an AudioSource component in the inspector
-    private bool playFirstClip = true; // Flag to alternate clips
+    public AudioClip gameLostSound;
+    public AudioClip gameWinSound;
+    public AudioSource inGameAudioSource;
+    [SerializeField] private AudioSource backgroundMusic;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateSprite();
+        backgroundMusic.Play();
     }
 
     private void Update()
@@ -57,22 +60,12 @@ public class Bread : MonoBehaviour
         }
     }
 
-    // Timer countdown
     private void UpdateTimer()
     {
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            if (Mathf.FloorToInt(timeRemaining) % 2 == 1 && playFirstClip) // Alternate on odd seconds
-            {
-                PlayClip(audioClip1);
-                playFirstClip = false;
-            }
-            else if (Mathf.FloorToInt(timeRemaining) % 2 == 0 && !playFirstClip) // Alternate on even seconds
-            {
-                PlayClip(audioClip2);
-                playFirstClip = true;
-            }
+            FindObjectOfType<TimerAudio>().PlayTickTock(timeRemaining);
             timerText.text = Mathf.CeilToInt(timeRemaining).ToString();
         }
         else
@@ -80,21 +73,16 @@ public class Bread : MonoBehaviour
             gameEnded = true;
             if (health > 0)
             {
-                DisplayWinMessage(); // Win if time runs out and bread still has health
+                PassedScenario();
             }
             else
             {
-                OnBreadConsumed(); // Lose if bread is fully eaten
+                FailedScenario();
             }
         }
     }
-    private void PlayClip(AudioClip clip)
-    {
-        if (audioSource.isPlaying) return; // Prevent overlapping
-        audioSource.clip = clip;
-        audioSource.Play();
-    }
-    // Method to reduce health
+
+
     public void ReduceHealth(int amount)
     {
         if (gameEnded) return;
@@ -106,11 +94,10 @@ public class Bread : MonoBehaviour
         {
             health = 0;
             gameEnded = true;
-            OnBreadConsumed(); // Trigger loss if bread is fully eaten
+            FailedScenario();
         }
     }
 
-    // Method to update the bread sprite based on health
     private void UpdateSprite()
     {
         if (health <= 90 && health >= 81)
@@ -135,29 +122,64 @@ public class Bread : MonoBehaviour
             spriteRenderer.sprite = fullBreadSprite;
     }
 
-    // Called when bread's health reaches zero
-    private void OnBreadConsumed()
+    private void FailedScenario()
     {
+        backgroundMusic.Stop();
+
+        PlayClip(gameLostSound);
+
         gameOverText.gameObject.SetActive(true);
-        gameOverText.text = "RIP bread"; // Display losing message
+
         timerText.text = "";
+
+        GameManager.Instance.gamesLost++;
+
+        backToMenuBtn.gameObject.SetActive(true);
+
+        backToMenuBtn.interactable = true; 
+
         DestroyGameObjects();
     }
 
-    // Display win message if timer runs out with bread remaining
-    private void DisplayWinMessage()
+    private void PassedScenario()
     {
-        gameOverText.gameObject.SetActive(true);
-        gameOverText.text = "Victory!"; // Display winning message
+        backgroundMusic.Stop();
+
+        PlayClip(gameWinSound);
+
+        gameWinText.gameObject.SetActive(true);
+
         timerText.text = "";
+
+        GameManager.Instance.gamesWon++;
+
+        backToMenuBtn.gameObject.SetActive(true);
+
+        backToMenuBtn.interactable = true;
+
         DestroyGameObjects();
     }
 
-    // Destroys game objects when game ends
+
+    private void PlayClip(AudioClip clip)
+    {
+        inGameAudioSource.clip = clip;
+        inGameAudioSource.Play();
+    }
+
     private void DestroyGameObjects()
     {
-        Destroy(gameObject); // Destroy the bread
+        // Handle the bread differently based on its health
+        if (health > 0)
+        {
+            ServeBread(); // Animate the bread out of the screen
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy the bread if no health is left
+        }
 
+        // Destroy other objects
         GameObject swatter = GameObject.FindWithTag("Swatter");
         if (swatter != null)
         {
@@ -176,4 +198,40 @@ public class Bread : MonoBehaviour
             Destroy(insectSpawner);
         }
     }
+
+    // New method to animate bread moving out of the screen
+    private void ServeBread()
+    {
+        // Disable any interaction with the bread
+        GetComponent<Collider2D>().enabled = false;
+
+        // Create an upward movement animation
+        StartCoroutine(AnimateBreadOut());
+    }
+
+    private IEnumerator AnimateBreadOut()
+    {
+        float duration = 1.0f; // Animation duration
+        float elapsedTime = 0f;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = startPosition + new Vector3(0, 8, 0); // Move 10 units upward
+
+        // Play "whoosh" sound if you have one
+        //PlayClip(bellDingSound); // Optional, adjust as necessary
+
+        // Smoothly move the bread upwards over time
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Finalize the position
+        transform.position = endPosition;
+
+        // Optionally destroy the bread after serving
+        Destroy(gameObject);
+    }
+
 }
