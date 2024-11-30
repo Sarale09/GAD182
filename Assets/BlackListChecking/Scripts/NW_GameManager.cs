@@ -23,6 +23,7 @@ public class NW_GameManager : MonoBehaviour
     public bool timerEnd;
     
     public GameObject villagerPrefab;
+    public GameObject villagerPrefab2;
     public NW_Villager firstInLine;
     public NW_Villager villager;
 
@@ -64,7 +65,15 @@ public class NW_GameManager : MonoBehaviour
         for (int i = 0; i < randomNameList.Count; i++)
         {
             namePlaceholder = randomNameList[counter];
-            Instantiate(villagerPrefab, positions[i], Quaternion.identity);
+            if (namePlaceholder == "Scott" || namePlaceholder == "Tom" || namePlaceholder == "Robert")
+            {
+                Instantiate(villagerPrefab, positions[i], Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(villagerPrefab2, positions[i], Quaternion.identity);
+            }
+            
             counter += 1;
         }
 
