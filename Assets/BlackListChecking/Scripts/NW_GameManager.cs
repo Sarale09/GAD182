@@ -200,6 +200,9 @@ public class NW_GameManager : MonoBehaviour
                 Debug.Log("Chasing villager away.");
                 gameText.text = "Chasing villager away.";
                 
+                SpriteRenderer sprite = villager.gameObject.GetComponent<SpriteRenderer>();
+                sprite.sprite = villager.angrySprite;
+                
                 yield return new WaitForSeconds(.5f);
                 
                 gameText.text = "Chasing villager away..";

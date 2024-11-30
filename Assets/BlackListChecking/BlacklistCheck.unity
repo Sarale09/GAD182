@@ -823,6 +823,7 @@ MonoBehaviour:
   timerUI: {fileID: 1405653983}
   timerEnd: 0
   villagerPrefab: {fileID: 4485146572701044777, guid: e6b528832db7f804aa43ae0e502d6aee, type: 3}
+  villagerPrefab2: {fileID: 36454362752783183, guid: a688809a357958e4591cff615da61133, type: 3}
   firstInLine: {fileID: 0}
   villager: {fileID: 0}
   gameText: {fileID: 477065816}
