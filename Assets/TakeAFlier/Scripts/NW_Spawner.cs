@@ -6,14 +6,17 @@ using TMPro;
 public class NW_Spawner : MonoBehaviour
 {
     public GameObject villager1;
+    public GameObject villager2;
     public NW_Counter counter;
 
-    public List<Vector2> villager1SpawnPoints;
+    public List<Vector2> villagerSpawnPoints;
+    public List<GameObject> villagers;
 
     public float spawnInterval;
     public float timer;
     public float peopleCount;
     public int randomNumber;
+    public int randomNumber2;
     
     public float timeRemain = 50f;
     public TextMeshProUGUI timerUI;
@@ -31,10 +34,13 @@ public class NW_Spawner : MonoBehaviour
         resultScreen.SetActive(false);
         counter = FindObjectOfType<NW_Counter>();
         
-        villager1SpawnPoints.Add(new Vector2(-10.5f, -0.5f));
-        villager1SpawnPoints.Add(new Vector2(-10.5f, -1));
-        villager1SpawnPoints.Add(new Vector2(10.5f, -0.5f));
-        villager1SpawnPoints.Add(new Vector2(10.5f, -1));
+        villagerSpawnPoints.Add(new Vector2(-10.5f, -0.5f));
+        villagerSpawnPoints.Add(new Vector2(-10.5f, -1));
+        villagerSpawnPoints.Add(new Vector2(10.5f, -0.5f));
+        villagerSpawnPoints.Add(new Vector2(10.5f, -1));
+        
+        villagers.Add(villager1);
+        villagers.Add(villager2);
 
         //Instantiate(villager1, new Vector2(-10.5f, 0), Quaternion.identity);
     }
@@ -43,6 +49,7 @@ public class NW_Spawner : MonoBehaviour
     void Update()
     {
         randomNumber = Random.Range(0, 5);
+        randomNumber2 = Random.Range(0, 2);
         spawnInterval = Random.Range(0, 3);
 
         timerUI.text = "" + (int)timeRemain;
@@ -115,6 +122,6 @@ public class NW_Spawner : MonoBehaviour
     void SpawnVillager()
     {
         // needs to instantiate randomly on both sides
-        Instantiate(villager1, villager1SpawnPoints[randomNumber], Quaternion.identity);
+        Instantiate(villagers[randomNumber2], villagerSpawnPoints[randomNumber], Quaternion.identity);
     }
 }
