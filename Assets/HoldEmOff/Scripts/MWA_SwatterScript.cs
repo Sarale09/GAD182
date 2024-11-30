@@ -16,7 +16,7 @@ public class MWA_SwatterScript : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+        
         // Get the BoxCollider2D component attached to this GameObject
         boxCollider = GetComponent<BoxCollider2D>();
 
