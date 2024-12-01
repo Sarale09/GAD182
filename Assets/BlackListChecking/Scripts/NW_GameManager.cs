@@ -26,7 +26,6 @@ public class NW_GameManager : MonoBehaviour
     
     public GameObject villagerPrefab;
     public GameObject villagerPrefab2;
-    public NW_Villager firstInLine;
     public NW_Villager villager;
 
     public TextMeshProUGUI gameText;
@@ -135,7 +134,6 @@ public class NW_GameManager : MonoBehaviour
     private IEnumerator listChecker()
     {
         villager = FindObjectOfType<NW_Villager>();
-        firstInLine = villager;
         Debug.Log("This villager's name is " + villager.villagerName);
         gameText.text = "This villager's name is " + villager.villagerName + ".";
         
@@ -281,38 +279,9 @@ public class NW_GameManager : MonoBehaviour
         }
     }
     
-    // gets the index number of a villager's position.
-    private int GetNextPosition(int iteration)
-    {
-        int current = GetVillagerIndex() + iteration;
-
-        if (current >= randomNameList.Count)
-        {
-            current = 0;
-        }
-        else if (current < 0)
-        {
-            current = randomNameList.Count - 1;
-        }
-
-        return current;
-
-    }
     
-    // gets the index number of a villager.
-    private int GetVillagerIndex()
-    {
-        for (int i = 0; i < randomNameList.Count; i++)
-        {
-            if (firstInLine.villagerName == randomNameList[i])
-            {
-                return i;
-            }
-        }
-        // we couldnt find the name in the list
-        Debug.Log("Name not found, returning 0");
-        return 0;
-    }
+    
+    
 
     private IEnumerator gameEnder()
     {
@@ -331,6 +300,15 @@ public class NW_GameManager : MonoBehaviour
         Debug.Log($"Your score is {score}.");
         gameText.text = "No more villagers remain in the waiting line.\nYour score is " + score + ".";
         gameOver = true;
+        
+        // if score < 3
+        // {
+        //    GameManager.Instance.SetLevelStatus("BlacklistChecking", false);  // Marks the game as played and lost 
+        // }
+        // else
+        // {
+        //     GameManager.Instance.SetLevelStatus("BlacklistChecking", true);  // Marks the game as played and won
+        // }
 
         // Shuts down timer if game ends early.
         if (!timerEnd)
