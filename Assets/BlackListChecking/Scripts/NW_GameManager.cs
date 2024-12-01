@@ -31,6 +31,10 @@ public class NW_GameManager : MonoBehaviour
     public TextMeshProUGUI listedName1;
     public TextMeshProUGUI listedName2;
     
+    public AudioSource blacklistAudioSource;
+    public AudioClip correctChoice;
+    public AudioClip wrongChoice;
+    
     void Start()
     {
         counter = 0;
@@ -171,11 +175,18 @@ public class NW_GameManager : MonoBehaviour
                     {
                         listedName2.text = "- <color=#BA3838>Tom</color>";
                     }
+
+                    blacklistAudioSource.clip = wrongChoice;
+                    blacklistAudioSource.Play();
                 }
                 else
                 {
                     Debug.Log("This villager passed the security check.");
                     gameText.text = "This villager passed the security check.";
+                    
+                    blacklistAudioSource.clip = correctChoice;
+                    blacklistAudioSource.Play();
+                    
                     score += 1;
                 }
                 
@@ -219,11 +230,18 @@ public class NW_GameManager : MonoBehaviour
                 {
                     Debug.Log("This villager is innocent. You chased away a potential customer.");
                     gameText.text = "This villager is innocent. You chased away a potential customer.";
+                    
+                    blacklistAudioSource.clip = wrongChoice;
+                    blacklistAudioSource.Play();
                 }
                 else
                 {
                     Debug.Log("You chased away a potential criminal.");
                     gameText.text = "You chased away a potential criminal.";
+                    
+                    blacklistAudioSource.clip = correctChoice;
+                    blacklistAudioSource.Play();
+                    
                     score += 1;
                     
                     if (villager.villagerName == "Scott")
