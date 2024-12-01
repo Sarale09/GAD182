@@ -47,11 +47,11 @@ public class NW_GameManager : MonoBehaviour
         villagerNameList.Add("Lucy");
         villagerNameList.Add("Misty");
         
-        positions.Add(new Vector2(-6, 0.5f));
-        positions.Add(new Vector2(-4.5f, 0.5f));
-        positions.Add(new Vector2(-3, 0.5f));
-        positions.Add(new Vector2(-1.5f, 0.5f));
-        positions.Add(new Vector2(0, 0.5f));
+        positions.Add(new Vector2(-6, -0.4f));
+        positions.Add(new Vector2(-4.5f, -0.4f));
+        positions.Add(new Vector2(-3, -0.4f));
+        positions.Add(new Vector2(-1.5f, -0.4f));
+        positions.Add(new Vector2(0, -0.4f));
 
         // Randomize the list of names in villagerNameList by storing them in a different order in a new list.
         while (villagerNameList.Count != 0)
