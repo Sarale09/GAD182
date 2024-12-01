@@ -156,9 +156,9 @@ RectTransform:
   m_Father: {fileID: 1951787915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -299.35986, y: -390.74936}
-  m_SizeDelta: {x: -628.1168, y: -825.6949}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 660.64014, y: 149.25064}
+  m_SizeDelta: {x: 1291.8832, y: 254.30511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12867798
 MonoBehaviour:
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Name 1'
+  m_text: '- Name 2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1891,7 +1891,6 @@ MonoBehaviour:
   timerEnd: 0
   villagerPrefab: {fileID: 4485146572701044777, guid: e6b528832db7f804aa43ae0e502d6aee, type: 3}
   villagerPrefab2: {fileID: 36454362752783183, guid: a688809a357958e4591cff615da61133, type: 3}
-  firstInLine: {fileID: 0}
   villager: {fileID: 0}
   gameText: {fileID: 477065816}
   listedName1: {fileID: 1441409642}
@@ -2943,10 +2942,10 @@ RectTransform:
   - {fileID: 648597403}
   m_Father: {fileID: 1951787915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 663.8794, y: -208.63806}
-  m_SizeDelta: {x: -1327.7588, y: -417.2762}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -296.1206, y: 331.36194}
+  m_SizeDelta: {x: 592.2412, y: 662.72375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629582733
 MonoBehaviour:
