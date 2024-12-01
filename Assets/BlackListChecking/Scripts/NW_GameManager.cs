@@ -13,6 +13,8 @@ public class NW_GameManager : MonoBehaviour
 
     public string namePlaceholder;
     public string randomName;
+    public string criminalOne;
+    public string criminalTwo;
     public int counter;
     public int score = 0;
     public bool inConversation;
@@ -39,22 +41,31 @@ public class NW_GameManager : MonoBehaviour
     {
         counter = 0;
         
-        blacklist.Add("Scott");
-        blacklist.Add("Tom");
-        
-        listedName1.text = "- Scott";
-        listedName2.text = "- Tom";
-        
         villagerNameList.Add("Scott");
         villagerNameList.Add("Robert");
         villagerNameList.Add("Tom");
         villagerNameList.Add("Lucy");
         villagerNameList.Add("Misty");
         
-        positions.Add(new Vector2(-6, -0.4f));
-        positions.Add(new Vector2(-4.5f, -0.4f));
-        positions.Add(new Vector2(-3, -0.4f));
-        positions.Add(new Vector2(-1.5f, -0.4f));
+        // randomize first blacklisted name
+        criminalOne = villagerNameList[Random.Range(0, villagerNameList.Count)];
+        blacklist.Add(criminalOne);
+        villagerNameList.Remove(criminalOne);
+        
+        // randomize second blacklisted name
+        criminalTwo = villagerNameList[Random.Range(0, villagerNameList.Count)];
+        blacklist.Add(criminalTwo);
+        
+        listedName1.text = $"- {blacklist[0]}";
+        listedName2.text = $"- {blacklist[1]}";
+        
+        // add removed name back to the list
+        villagerNameList.Add(criminalOne);
+        
+        positions.Add(new Vector2(-7.6f, -0.4f));
+        positions.Add(new Vector2(-5.7f, -0.4f));
+        positions.Add(new Vector2(-3.8f, -0.4f));
+        positions.Add(new Vector2(-1.9f, -0.4f));
         positions.Add(new Vector2(0, -0.4f));
 
         // Randomize the list of names in villagerNameList by storing them in a different order in a new list.
@@ -166,14 +177,13 @@ public class NW_GameManager : MonoBehaviour
                     Debug.Log("This villager is banned. Wrong choice.");
                     gameText.text = "This villager is banned. Wrong choice.";
                     
-                    if (villager.villagerName == "Scott")
+                    if (villager.villagerName == blacklist[0])
                     {
-                        listedName1.text = "- <color=#BA3838>Scott</color>";
+                        listedName1.text = $"- <color=#BA3838>{blacklist[0]}</color>";
                     }
-
-                    if (villager.villagerName == "Tom")
+                    else if (villager.villagerName == blacklist[1])
                     {
-                        listedName2.text = "- <color=#BA3838>Tom</color>";
+                        listedName2.text = $"- <color=#BA3838>{blacklist[1]}</color>";
                     }
 
                     blacklistAudioSource.clip = wrongChoice;
@@ -197,7 +207,7 @@ public class NW_GameManager : MonoBehaviour
                 foreach (GameObject villager in villagerList)
                 {
                     // yield return new WaitForSeconds(0.2f);
-                    villager.transform.position = new Vector2(villager.transform.position.x + 1.5f, villager.transform.position.y);
+                    villager.transform.position = new Vector2(villager.transform.position.x + 1.9f, villager.transform.position.y);
                 }
                 
                 yield return new WaitForSeconds(2f);
@@ -223,8 +233,6 @@ public class NW_GameManager : MonoBehaviour
                 gameText.text = "Chasing villager away...";
                 
                 yield return new WaitForSeconds(1f);
-
-                yield return new WaitForSeconds(1f);
                 
                 if (!villager.isBanned)
                 {
@@ -244,14 +252,13 @@ public class NW_GameManager : MonoBehaviour
                     
                     score += 1;
                     
-                    if (villager.villagerName == "Scott")
+                    if (villager.villagerName == blacklist[0])
                     {
-                        listedName1.text = "- <color=#B1B1B1><s>Scott</s></color>";
+                        listedName1.text = $"- <color=#B1B1B1><s>{blacklist[0]}</s></color>";
                     }
-
-                    if (villager.villagerName == "Tom")
+                    else if (villager.villagerName == blacklist[1])
                     {
-                        listedName2.text = "- <color=#B1B1B1><s>Tom</s></color>";
+                        listedName2.text = $"- <color=#B1B1B1><s>{blacklist[1]}</s></color>";
                     }
                 }
                 
