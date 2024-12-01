@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MWA_SceneLoaderScript : MonoBehaviour
 {
     public void LoadGame(string sceneName)
     {
-        if (!string.IsNullOrEmpty(sceneName))
+        // Check if the level has been played already
+        if (GameManager.Instance.GetLevelStatus(sceneName) == "not played")
         {
-            SceneManager.LoadScene(sceneName);
-        }
-        else
-        {
-            Debug.LogWarning("Scene name is empty.");
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                // Load the scene
+                SceneManager.LoadScene(sceneName);
+            }
         }
     }
 }

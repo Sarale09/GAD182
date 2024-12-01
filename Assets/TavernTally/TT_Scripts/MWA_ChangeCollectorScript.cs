@@ -72,7 +72,7 @@ public class ChangeCollector : MonoBehaviour
             VoicelineAudioSource.Play();
 
             timerEnded = true;
-            GameManager.Instance.gamesWon++;
+            GameManager.Instance.SetLevelStatus("TavernTally", true);  // Marks the game as played and won
             StartCoroutine(MoveVillagerOutOfScene(TT_villager, 4f, true));
         }
         else if (collectedChange > requiredChange)
@@ -83,7 +83,7 @@ public class ChangeCollector : MonoBehaviour
             VoicelineAudioSource.Play();
 
             timerEnded = true;
-            GameManager.Instance.gamesLost++;
+            GameManager.Instance.SetLevelStatus("TavernTally", false);  // Marks the game as played and lost
             StartCoroutine(MoveVillagerOutOfScene(TT_villager, 6f, false));
         }
     }
@@ -116,7 +116,7 @@ public class ChangeCollector : MonoBehaviour
 
         TT_villagerSpriteRenderer.sprite = angryVillagerSprite;
 
-        GameManager.Instance.gamesLost++;
+        GameManager.Instance.SetLevelStatus("TavernTally", false);  // Marks the game as played and lost
 
         // Trigger camera shake
         Camera.main.GetComponent<CameraShake>()?.StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.13f, 0.2f));

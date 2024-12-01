@@ -132,7 +132,7 @@ public class Bread : MonoBehaviour
 
         timerText.text = "";
 
-        GameManager.Instance.gamesLost++;
+        GameManager.Instance.SetLevelStatus("HoldEmOff", false);  // Marks the game as played and lost
 
         backToMenuBtn.gameObject.SetActive(true);
 
@@ -151,7 +151,7 @@ public class Bread : MonoBehaviour
 
         timerText.text = "";
 
-        GameManager.Instance.gamesWon++;
+        GameManager.Instance.SetLevelStatus("HoldEmOff", true);  // Marks the game as played and won
 
         backToMenuBtn.gameObject.SetActive(true);
 
