@@ -20,7 +20,9 @@ public class NW_BaseVillager : NW_Movement2
     public bool spawnedLeft;
     public bool spawnedRight;
     
-    
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public float volume = 1;
     
     // Start is called before the first frame update
     void OnEnable()
@@ -90,6 +92,12 @@ public class NW_BaseVillager : NW_Movement2
                 OnFlierHandout?.Invoke(); // (can't call functions in NW_Counter)
             
                 hasFlier = true;
+
+                if (!audioClip)
+                {
+                    audioSource.clip = audioClip;
+                }
+                audioSource.PlayOneShot(audioClip);
             }
         }
     }
