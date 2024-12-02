@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AS_GameManager2 : MonoBehaviour
 {
+    public Animator cauldronAnimator;
     public GameObject pump;
     public GameObject winCanvas;
     public GameObject cauldron;
@@ -15,6 +16,7 @@ public class AS_GameManager2 : MonoBehaviour
 
     private void Start()
     {
+        cauldronAnimator = cauldron.GetComponent<Animator>();
         boilingSound = cauldron.GetComponent<AudioSource>();
     }
     void Update()
@@ -34,6 +36,7 @@ public class AS_GameManager2 : MonoBehaviour
         if (counter == 5)
         {
             boilingSound.Play();
+            cauldronAnimator.Play("CauldronAnim");
         }
     }
 }
