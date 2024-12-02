@@ -12,6 +12,7 @@ public class HE_GameEnd : MonoBehaviour
     public bool fightState;
     public HE_TimerScriptTwo timerS;
     public TextMeshProUGUI tutText;
+    public AudioSource failNoise;
     
 
 
@@ -45,6 +46,8 @@ public class HE_GameEnd : MonoBehaviour
             fightState = true;
             cM.speed = 0f;
             cTM.speed = 0f;
+            failNoise.Play();
+            timerS.timerUI.text = "";
         }
     }
 
