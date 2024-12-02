@@ -13,7 +13,7 @@ public class HE_RepairClick : MonoBehaviour
     public HE_WinConScript wN;
     public static int endState = 0;
     public TextMeshProUGUI tutText;
-
+    public AudioSource hammer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class HE_RepairClick : MonoBehaviour
     {
         endState++;
         sR.sprite = patched;
-        
+        hammer.Play();
         Debug.Log(endState);
 
 
