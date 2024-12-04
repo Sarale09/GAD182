@@ -9,6 +9,8 @@ public class NW_Villager : MonoBehaviour
     
     public string villagerName;
     public bool isBanned;
+    public bool isAtFront;
+    public Sprite angrySprite;
     
     void OnEnable()
     {

@@ -9,9 +9,12 @@ public class NW_GameManager : MonoBehaviour
     public List<string> randomNameList;
     public List<string> blacklist;
     public List<GameObject> villagerList;
+    private List<Vector2> positions = new List<Vector2>();
 
     public string namePlaceholder;
     public string randomName;
+    public string criminalOne;
+    public string criminalTwo;
     public int counter;
     public int score = 0;
     public bool inConversation;
@@ -22,20 +25,47 @@ public class NW_GameManager : MonoBehaviour
     public bool timerEnd;
     
     public GameObject villagerPrefab;
+    public GameObject villagerPrefab2;
     public NW_Villager villager;
+
+    public TextMeshProUGUI gameText;
+    public TextMeshProUGUI listedName1;
+    public TextMeshProUGUI listedName2;
+    
+    public AudioSource blacklistAudioSource;
+    public AudioClip correctChoice;
+    public AudioClip wrongChoice;
     
     void Start()
     {
         counter = 0;
-        
-        blacklist.Add("Scott");
-        blacklist.Add("Tom");
         
         villagerNameList.Add("Scott");
         villagerNameList.Add("Robert");
         villagerNameList.Add("Tom");
         villagerNameList.Add("Lucy");
         villagerNameList.Add("Misty");
+        
+        // randomize first blacklisted name
+        criminalOne = villagerNameList[Random.Range(0, villagerNameList.Count)];
+        blacklist.Add(criminalOne);
+        villagerNameList.Remove(criminalOne);
+        
+        // randomize second blacklisted name
+        criminalTwo = villagerNameList[Random.Range(0, villagerNameList.Count)];
+        blacklist.Add(criminalTwo);
+        
+        listedName1.text = $"- {blacklist[0]}";
+        listedName2.text = $"- {blacklist[1]}";
+        
+        // add removed name back to the list
+        villagerNameList.Add(criminalOne);
+        
+        positions.Add(new Vector2(-7.6f, -0.4f));
+        positions.Add(new Vector2(-5.7f, -0.4f));
+        positions.Add(new Vector2(-3.8f, -0.4f));
+        positions.Add(new Vector2(-1.9f, -0.4f));
+        positions.Add(new Vector2(0, -0.4f));
 
         // Randomize the list of names in villagerNameList by storing them in a different order in a new list.
         while (villagerNameList.Count != 0)
@@ -46,12 +76,22 @@ public class NW_GameManager : MonoBehaviour
         }
         
         // Spawns a villager for each name on the list and assign them that name. 
-        foreach (var a in randomNameList)
+        for (int i = 0; i < randomNameList.Count; i++)
         {
             namePlaceholder = randomNameList[counter];
-            Instantiate(villagerPrefab);
+            if (namePlaceholder == "Scott" || namePlaceholder == "Tom" || namePlaceholder == "Robert")
+            {
+                Instantiate(villagerPrefab, positions[i], Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(villagerPrefab2, positions[i], Quaternion.identity);
+            }
+            
             counter += 1;
         }
+
+        counter = 0;
     }
 
     void Update()
@@ -87,19 +127,7 @@ public class NW_GameManager : MonoBehaviour
         // If there are no more villagers left in line or the timer has run out while the game isn't over.
         if (!gameOver && (villagerList.Count <= 0 || timerEnd))
         {
-            if (villagerList.Count > 0)
-            {
-                Debug.Log("The villagers in line got impatient and left...");
-            }
-            Debug.Log("No more villagers remain in the waiting line.");
-            Debug.Log($"Your score is {score}.");
-            gameOver = true;
-
-            // Shuts down timer if game ends early.
-            if (!timerEnd)
-            {
-                timeR = 0f;
-            }
+            StartCoroutine(gameEnder());
         } 
     }
 
@@ -107,10 +135,12 @@ public class NW_GameManager : MonoBehaviour
     {
         villager = FindObjectOfType<NW_Villager>();
         Debug.Log("This villager's name is " + villager.villagerName);
+        gameText.text = "This villager's name is " + villager.villagerName + ".";
         
         yield return new WaitForSeconds(0.5f);
         
         Debug.Log("Do you wish to let them pass? Press Y for yes or N for no.");
+        gameText.text = "This villager's name is " + villager.villagerName + ".\nDo you wish to let them pass? Press Y for yes or N for no.";
         
         yield return WaitForInput(KeyCode.Space);
         
@@ -127,23 +157,58 @@ public class NW_GameManager : MonoBehaviour
             // The "Yes" option.
             if(Input.GetKeyDown(KeyCode.Y))
             {
-                Debug.Log("Letting villager in.");
+                Debug.Log("Letting villager in...");
+                gameText.text = "Letting villager in.";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Letting villager in..";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Letting villager in...";
                 
                 yield return new WaitForSeconds(1f);
                 
                 if (villager.isBanned)
                 {
                     Debug.Log("This villager is banned. Wrong choice.");
+                    gameText.text = "This villager is banned. Wrong choice.";
+                    
+                    if (villager.villagerName == blacklist[0])
+                    {
+                        listedName1.text = $"- <color=#BA3838>{blacklist[0]}</color>";
+                    }
+                    else if (villager.villagerName == blacklist[1])
+                    {
+                        listedName2.text = $"- <color=#BA3838>{blacklist[1]}</color>";
+                    }
+
+                    blacklistAudioSource.clip = wrongChoice;
+                    blacklistAudioSource.Play();
                 }
                 else
                 {
                     Debug.Log("This villager passed the security check.");
+                    gameText.text = "This villager passed the security check.";
+                    
+                    blacklistAudioSource.clip = correctChoice;
+                    blacklistAudioSource.Play();
+                    
                     score += 1;
                 }
                 
                 Destroy(villager.gameObject);
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
+                
+                foreach (GameObject villager in villagerList)
+                {
+                    // yield return new WaitForSeconds(0.2f);
+                    villager.transform.position = new Vector2(villager.transform.position.x + 1.9f, villager.transform.position.y);
+                }
+                
+                yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
             }
@@ -152,27 +217,103 @@ public class NW_GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.N))
             {
                 Debug.Log("Chasing villager away.");
-
+                gameText.text = "Chasing villager away.";
+                
+                SpriteRenderer sprite = villager.gameObject.GetComponent<SpriteRenderer>();
+                sprite.sprite = villager.angrySprite;
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Chasing villager away..";
+                
+                yield return new WaitForSeconds(.5f);
+                
+                gameText.text = "Chasing villager away...";
+                
                 yield return new WaitForSeconds(1f);
                 
                 if (!villager.isBanned)
                 {
                     Debug.Log("This villager is innocent. You chased away a potential customer.");
+                    gameText.text = "This villager is innocent. You chased away a potential customer.";
+                    
+                    blacklistAudioSource.clip = wrongChoice;
+                    blacklistAudioSource.Play();
                 }
                 else
                 {
                     Debug.Log("You chased away a potential criminal.");
+                    gameText.text = "You chased away a potential criminal.";
+                    
+                    blacklistAudioSource.clip = correctChoice;
+                    blacklistAudioSource.Play();
+                    
                     score += 1;
+                    
+                    if (villager.villagerName == blacklist[0])
+                    {
+                        listedName1.text = $"- <color=#B1B1B1><s>{blacklist[0]}</s></color>";
+                    }
+                    else if (villager.villagerName == blacklist[1])
+                    {
+                        listedName2.text = $"- <color=#B1B1B1><s>{blacklist[1]}</s></color>";
+                    }
                 }
                 
                 Destroy(villager.gameObject);
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
+                
+                foreach (GameObject villager in villagerList)
+                {
+                    // yield return new WaitForSeconds(0.2f);
+                    villager.transform.position = new Vector2(villager.transform.position.x + 1.5f, villager.transform.position.y);
+                }
+                
+                yield return new WaitForSeconds(2f);
                 
                 decisionMade = true;
             }
             
             yield return null; 
+        }
+    }
+    
+    
+    
+    
+
+    private IEnumerator gameEnder()
+    {
+        if (villagerList.Count > 0)
+        {
+            Debug.Log("The villagers in line got impatient and left...");
+            gameText.text = "The villagers in line got impatient and left...";
+            
+            yield return new WaitForSeconds(2f);
+        }
+        Debug.Log("No more villagers remain in the waiting line.");
+        gameText.text = "No more villagers remain in the waiting line.";
+        
+        yield return new WaitForSeconds(.5f);
+        
+        Debug.Log($"Your score is {score}.");
+        gameText.text = "No more villagers remain in the waiting line.\nYour score is " + score + ".";
+        gameOver = true;
+        
+        // if score < 3
+        // {
+        //    GameManager.Instance.SetLevelStatus("BlacklistChecking", false);  // Marks the game as played and lost 
+        // }
+        // else
+        // {
+        //     GameManager.Instance.SetLevelStatus("BlacklistChecking", true);  // Marks the game as played and won
+        // }
+
+        // Shuts down timer if game ends early.
+        if (!timerEnd)
+        {
+            timeR = 0f;
         }
     }
 }
