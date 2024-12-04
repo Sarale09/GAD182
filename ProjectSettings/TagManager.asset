@@ -3,12 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bread
+  - Insect
+  - Swatter
+  - InsectSpawner
+  - Ale
+  - Glass
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BarFight
   - Water
   - UI
   - 
@@ -38,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: MainMenu
+    uniqueID: 2835272921
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HE_Layer
+    uniqueID: 3408346979
     locked: 0
