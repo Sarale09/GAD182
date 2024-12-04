@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class NW_Counter : MonoBehaviour
 {
     public NW_BaseVillager villager1;
+    public TextMeshProUGUI instructionsText;
     
     public float fliers = 5;
     
@@ -14,6 +16,8 @@ public class NW_Counter : MonoBehaviour
     {
         //villager1.OnFlierHandout += ScoreCountdown;
         Debug.Log($"You have {fliers} fliers to hand out today.");
+
+        instructionsText.text = "Click on the villagers passing by to give them a flier!";
     }
 
     private void OnDisable()
