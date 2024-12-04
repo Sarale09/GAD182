@@ -9,6 +9,7 @@ public class HE_GameEnd : MonoBehaviour
     public TextMeshProUGUI winEnd;
     public HE_CustomerMovement cM;
     public HE_CustomerTwoMove cTM;
+    public HE_MouseController_BarFight mouseCtrl;
     public bool fightState;
     public HE_TimerScriptTwo timerS;
     public TextMeshProUGUI tutText;
@@ -31,7 +32,7 @@ public class HE_GameEnd : MonoBehaviour
             winEnd.text = "You have stopped the fight";
             cM.speed = 0f;
             cTM.speed = 0f;
-
+            
         }
 
 
@@ -48,6 +49,7 @@ public class HE_GameEnd : MonoBehaviour
             cTM.speed = 0f;
             failNoise.Play();
             timerS.timerUI.text = "";
+            
         }
     }
 

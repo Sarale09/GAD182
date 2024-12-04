@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HE_CustomerMovement : MonoBehaviour
 {
+
     public GameObject customerOne;
     public Transform customerTwo;
     public float speed;
