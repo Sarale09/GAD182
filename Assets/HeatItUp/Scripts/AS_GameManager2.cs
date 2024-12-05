@@ -27,10 +27,12 @@ public class AS_GameManager2 : MonoBehaviour
             //if player wins before time runs out
             winText.text ="Good soup!";
             winCanvas.SetActive(true);
+            GameManager.Instance.SetLevelStatus("HeatItUp", true);
         }else if (counter < 10 && timerScript.timerEnd) {
             //if time runs out
             winText.text = "Need cooking lessons?";
             winCanvas.SetActive(true);
+            GameManager.Instance.SetLevelStatus("HeatItUp", false);
         }
 
         if (counter == 5)

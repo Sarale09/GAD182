@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TavernTally/TavernTally.unity
     guid: ead32d56b8744dd468ce27682d913d8b
+  - enabled: 1
+    path: Assets/BarFight/Scenes/BarfightScene.unity
+    guid: a8a7cdf933617b740b1b86ffe79b624c
   m_configObjects: {}

@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    [SerializeField] private Sprite Tick;  // Sprite for win
+    [SerializeField] private Sprite Cross; // Sprite for loss
+
     private void Start()
     {
         UpdateButtonStates(); // Update the button states based on GameManager data
@@ -24,22 +27,28 @@ public class ButtonManager : MonoBehaviour
 
                 if (button != null)
                 {
-                    Image buttonImage = button.GetComponent<Image>();
-                    // Disable button if the level has been played, regardless of whether won or lost
-                    if (status == "played_won")
+                    // Disable the button interaction
+                    button.interactable = false;
+
+                    // Find the WinOrLose? GameObject within the button
+                    Transform winOrLoseTransform = button.transform.Find("WinLostStatus");
+                    if (winOrLoseTransform != null)
                     {
-                        button.interactable = false;
-                        buttonImage.color = new Color(0.5f, 1f, 0.5f); // Light green
-                    }
-                    else if (status == "played_lost")
-                    {
-                        button.interactable = false;
-                        buttonImage.color = new Color(1f, 0.5f, 0.5f); // Light red
-                    }
-                    else
-                    {
-                        button.interactable = false;
-                        buttonImage.color = Color.white; // Default button color
+                        GameObject winOrLose = winOrLoseTransform.gameObject;
+
+                        // Enable the WinOrLose? GameObject
+                        winOrLose.SetActive(true);
+
+                        // Get the Image component and set the sprite based on the status
+                        Image winOrLoseImage = winOrLose.GetComponent<Image>();
+                        if (status == "played_won")
+                        {
+                            winOrLoseImage.sprite = Tick; // Assign tick sprite
+                        }
+                        else if (status == "played_lost")
+                        {
+                            winOrLoseImage.sprite = Cross; // Assign cross sprite
+                        }
                     }
                 }
             }

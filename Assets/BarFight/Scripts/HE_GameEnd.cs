@@ -14,7 +14,7 @@ public class HE_GameEnd : MonoBehaviour
     public HE_TimerScriptTwo timerS;
     public TextMeshProUGUI tutText;
     public AudioSource failNoise;
-    
+    public GameObject backToMenu;
 
 
     // Start is called before the first frame update
@@ -32,7 +32,8 @@ public class HE_GameEnd : MonoBehaviour
             winEnd.text = "You have stopped the fight";
             cM.speed = 0f;
             cTM.speed = 0f;
-            
+            GameManager.Instance.SetLevelStatus("BarfightScene", true);
+            backToMenu.SetActive(true);
         }
 
 
@@ -49,7 +50,8 @@ public class HE_GameEnd : MonoBehaviour
             cTM.speed = 0f;
             failNoise.Play();
             timerS.timerUI.text = "";
-            
+            GameManager.Instance.SetLevelStatus("BarfightScene", false);
+            backToMenu.SetActive(true);
         }
     }
 

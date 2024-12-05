@@ -35,20 +35,20 @@ public class AS_Instructions : MonoBehaviour
             case "KegRepair":
                 instructions.text = "keg repair";
                 break;
-            case "BarFight":
+            case "BarfightScene":
                 instructions.text = "bar fight";
                 break;
             case "TakeAFlier":
                 instructions.text = "take a flier";
                 break;
-            case "BlacklistChecking":
+            case "BlacklistCheck":
                 instructions.text = "blacklist";
                 break;
             case "HoldEmOff":
-                instructions.text = "Hold em off";
+                instructions.text = "Protect the bread by swatting insects with the Left Mouse Button. Protect it until time runs out to win.";
                 break;
             case "TavernTally":
-                instructions.text = "Tavern tally";
+                instructions.text = "Click using Left Mouse Button on notes and coins to give exact change for the displayed amount within 5 seconds";
                 break;
         }
         

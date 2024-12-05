@@ -35,6 +35,8 @@ public class NW_GameManager : MonoBehaviour
     public AudioSource blacklistAudioSource;
     public AudioClip correctChoice;
     public AudioClip wrongChoice;
+
+    public GameObject backToMenu;
     
     void Start()
     {
@@ -301,14 +303,16 @@ public class NW_GameManager : MonoBehaviour
         gameText.text = "No more villagers remain in the waiting line.\nYour score is " + score + ".";
         gameOver = true;
         
-        // if score < 3
-        // {
-        //    GameManager.Instance.SetLevelStatus("BlacklistChecking", false);  // Marks the game as played and lost 
-        // }
-        // else
-        // {
-        //     GameManager.Instance.SetLevelStatus("BlacklistChecking", true);  // Marks the game as played and won
-        // }
+        if (score < 3)
+        {
+            GameManager.Instance.SetLevelStatus("BlacklistCheck", false);  // Marks the game as played and lost
+            backToMenu.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.SetLevelStatus("BlacklistCheck", true);  // Marks the game as played and won
+            backToMenu.SetActive(true);
+        }
 
         // Shuts down timer if game ends early.
         if (!timerEnd)

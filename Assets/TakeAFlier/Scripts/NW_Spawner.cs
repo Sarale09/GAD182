@@ -27,6 +27,8 @@ public class NW_Spawner : MonoBehaviour
     public bool timerEnd;
 
     public bool gameEnded;
+
+    public GameObject backToMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -98,6 +100,9 @@ public class NW_Spawner : MonoBehaviour
                 
                 gameEnded = true;
                 timeRemain = 0f;
+
+                GameManager.Instance.SetLevelStatus("TakeAFlier", true); // played and won
+                backToMenu.SetActive(true);
             }
             else
             {
@@ -107,6 +112,9 @@ public class NW_Spawner : MonoBehaviour
                 resultText.text = "You failed to hand out all the fliers in time. You lose.";
                 
                 gameEnded = true;
+
+                GameManager.Instance.SetLevelStatus("TakeAFlier", false); // played and lost
+                backToMenu.SetActive(true);
             }
         }
         
