@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bdffdc02c59909144b2be24557dd0bec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - counter: {instanceID: 0}
+  - spawner: {instanceID: 0}
+  - flierSprite: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - audioClip: {fileID: 8300000, guid: f284e5f3be5a84d45b50d1d8f6df15d8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
