@@ -4,12 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bread
-  - Insect
-  - Swatter
-  - InsectSpawner
-  - Ale
-  - Glass
+  - Customer
   layers:
   - Default
   - TransparentFX
@@ -44,9 +39,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: MainMenu
-    uniqueID: 2835272921
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
