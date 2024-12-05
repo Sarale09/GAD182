@@ -22,7 +22,6 @@ public class AS_Instructions : MonoBehaviour
 
     public void buttonHover()
     {
-        Debug.Log("Hovering");
         titleObj.SetActive(false);
         switch (gameObject.name)
         {
@@ -55,7 +54,6 @@ public class AS_Instructions : MonoBehaviour
     }
     public void buttonHoverExit()
     {
-        Debug.Log("Not Hovering");
         titleObj.SetActive(true);
         instructions.text = "";
     }
