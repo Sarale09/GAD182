@@ -98,6 +98,8 @@ public class NW_Spawner : MonoBehaviour
                 
                 gameEnded = true;
                 timeRemain = 0f;
+                
+                GameManager.Instance.SetLevelStatus("TakeAFlier", true);
             }
             else
             {
@@ -107,15 +109,9 @@ public class NW_Spawner : MonoBehaviour
                 resultText.text = "You failed to hand out all the fliers in time. You lose.";
                 
                 gameEnded = true;
+                
+                GameManager.Instance.SetLevelStatus("TakeAFlier", false);
             }
-        }
-        
-        
-        
-        // For testing purposes
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(villager1, new Vector2(-10.5f, 0), Quaternion.identity);
         }
     }
 
