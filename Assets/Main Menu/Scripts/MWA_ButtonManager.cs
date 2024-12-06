@@ -27,7 +27,7 @@ public class ButtonManager : MonoBehaviour
 
                 if (button != null)
                 {
-                    // Disable the button interaction
+                    // Disable the button
                     button.interactable = false;
 
                     // Find the WinOrLose? GameObject within the button
@@ -36,8 +36,7 @@ public class ButtonManager : MonoBehaviour
                     {
                         GameObject winOrLose = winOrLoseTransform.gameObject;
 
-                        // Enable the WinOrLose? GameObject
-                        winOrLose.SetActive(true);
+                        winOrLose.SetActive(true); // Enable the Ticks and Crosses
 
                         // Get the Image component and set the sprite based on the status
                         Image winOrLoseImage = winOrLose.GetComponent<Image>();

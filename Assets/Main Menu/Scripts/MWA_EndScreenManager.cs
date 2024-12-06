@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MWA_EndScreenManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class MWA_EndScreenManager : MonoBehaviour
 
     private void CheckAllLevelsPlayed()
     {
-        if (GameManager.Instance.levelStatus.Count >= 8) // Assuming you have 8 minigames
+        if (GameManager.Instance.levelStatus.Count >= 8)
         {
             bool allGamesPlayed = true;
             foreach (var status in GameManager.Instance.levelStatus.Values)
@@ -49,21 +50,37 @@ public class MWA_EndScreenManager : MonoBehaviour
         }
     }
 
-    // Call this method to enable lost levels
+    // This method to re-enables lost mini games
     public void EnableLostLevels()
     {
         foreach (var level in GameManager.Instance.levelStatus)
         {
             if (level.Value == "played_lost")
             {
-                // Enable the buttons for lost levels (replace with your own logic)
-                Debug.Log("Re-enabling level: " + level.Key);
+                Button button = GameObject.Find(level.Key)?.GetComponent<Button>();
+                if (button != null)
+                {
+                    // Enable the button interaction
+                    button.interactable = true;
+                    Transform winOrLoseTransform = button.transform.Find("WinLostStatus");
+                    if (winOrLoseTransform != null)
+                    {
+                        GameObject winOrLose = winOrLoseTransform.gameObject;
+
+                        // Disable the Ticks and Crosses
+                        winOrLose.SetActive(false);
+                    }
+                }
             }
             else
             {
-                Debug.Log("Keeping level disabled: " + level.Key);
             }
         }
         endScreenPanel.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
