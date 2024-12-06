@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreenPanel: {fileID: 777891704}
+  EndScreenMessage: {fileID: 826268935}
+  RetryBtn: {fileID: 1250386535}
 --- !u!4 &1274944
 Transform:
   m_ObjectHideFlags: 0
