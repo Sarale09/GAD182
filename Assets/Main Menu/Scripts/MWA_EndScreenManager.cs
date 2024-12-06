@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class MWA_EndScreenManager : MonoBehaviour
 {
@@ -26,7 +28,6 @@ public class MWA_EndScreenManager : MonoBehaviour
             CheckAllLevelsPlayed();
         }
     }
-
     private void CheckAllLevelsPlayed()
     {
         if (GameManager.Instance.levelStatus.Count >= 8)
@@ -36,40 +37,32 @@ public class MWA_EndScreenManager : MonoBehaviour
 
             foreach (var status in GameManager.Instance.levelStatus.Values)
             {
-                if (status.StartsWith("not played"))
+                if (!status.StartsWith("played")) // If any game is not played
                 {
                     allGamesPlayed = false;
-                    break; // Exit early if any game is not played
+                    break;
+                }
+
+                if (!status.EndsWith("won")) // If any game was not won
+                {
+                    allGamesWon = false;
                 }
             }
 
-            if (allGamesPlayed)
+            if (allGamesPlayed && endScreenPanel != null && !endScreenPanel.activeSelf)
             {
-                // Check if all played levels were won
-                foreach (var status in GameManager.Instance.levelStatus.Values)
+                endScreenPanel.SetActive(true);
+                endScreenDisplayed = true; // Mark the end screen as displayed
+
+                // Update the message based on whether all games were won
+                if (allGamesWon)
                 {
-                    if (status != "won") // If any level is not won, set allGamesWon to false
-                    {
-                        allGamesWon = false;
-                        break; // Exit early if any game was lost
-                    }
+                    EndScreenMessage.text = "Good Job mate!\nYou have successfully saved the tavern!";
+                    RetryBtn.gameObject.SetActive(false);
                 }
-
-                if (allGamesPlayed)
+                else
                 {
-                    // If all levels are played, enable the end screen panel
-                    if (endScreenPanel != null && !endScreenPanel.activeSelf)
-                    {
-                        endScreenPanel.SetActive(true);
-                        endScreenDisplayed = true; // Mark the end screen as displayed, stop checking
-
-                        // Update the message based on whether all games were won
-                        if (allGamesWon)
-                        {
-                            EndScreenMessage.text = "Good Job! You have successfully saved the tavern!";
-                            RetryBtn.interactable = false;
-                        }
-                    }
+                    EndScreenMessage.text = "Great effort!\nYou didn't quite pass all the games.\nWould you like to retry the ones you lost?";
                 }
             }
         }
