@@ -301,14 +301,14 @@ public class NW_GameManager : MonoBehaviour
         gameText.text = "No more villagers remain in the waiting line.\nYour score is " + score + ".";
         gameOver = true;
         
-        // if score < 3
-        // {
-        //    GameManager.Instance.SetLevelStatus("BlacklistChecking", false);  // Marks the game as played and lost 
-        // }
-        // else
-        // {
-        //     GameManager.Instance.SetLevelStatus("BlacklistChecking", true);  // Marks the game as played and won
-        // }
+        if (score < 3)
+        {
+           GameManager.Instance.SetLevelStatus("BlacklistChecking", false);  // Marks the game as played and lost 
+        }
+        else
+        {
+            GameManager.Instance.SetLevelStatus("BlacklistChecking", true);  // Marks the game as played and won
+        }
 
         // Shuts down timer if game ends early.
         if (!timerEnd)
