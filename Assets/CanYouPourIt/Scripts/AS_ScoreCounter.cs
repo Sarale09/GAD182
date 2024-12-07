@@ -12,7 +12,7 @@ public class AS_ScoreCounter : MonoBehaviour
 
     void Update()
     {
-        if(timerScript.timerEnd){
+        if(timerScript.timerEnd && fullGlasses < 5){
             resultText.text = "Too Slow, bad bartender";
             resultScreen.SetActive(true);
             GameManager.Instance.SetLevelStatus("CanYouPourIt", false);  // Marks the game as played and lost
