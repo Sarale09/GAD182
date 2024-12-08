@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 312.04666, y: -540}
-  m_SizeDelta: {x: 604.0933, y: 1060}
+  m_AnchoredPosition: {x: 331.30685, y: -540}
+  m_SizeDelta: {x: 522.6137, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24762328
 MonoBehaviour:
@@ -1491,8 +1491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1497.3033, y: -540}
-  m_SizeDelta: {x: 825.3933, y: 1060}
+  m_AnchoredPosition: {x: 1451.436, y: -540}
+  m_SizeDelta: {x: 937.12775, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417759877
 MonoBehaviour:
@@ -1528,25 +1528,27 @@ MonoBehaviour:
 
     Copper Bell Ding 25 - floraphonic
 
-    Voiced Lines -
-    ElevenLabs
+    Draw Sword sound
+    effect #1 - Freesound Community
+
+    Voiced Lines - ElevenLabs
 
     Fail - Universfield
 
-    Folding paper, short - Gfx Sounds
+    Folding
+    paper, short - Gfx Sounds
 
-    Fly
-    Swatted Sound Effect - Ejkop Archive
+    Fly Swatted Sound Effect - Ejkop Archive
 
-    New Level - Universfield
+    New
+    Level - Universfield
 
-    Newspaper
-    Foley 4 - floraphonic
+    Newspaper Foley 4 - floraphonic
 
     SWOOSH - InspectorJ
 
-    The Red Fox Tavern - Curran
-    Son
+    The
+    Red Fox Tavern - Curran Son
 
     Water Droplet 1 - floraphonic
 
@@ -3780,8 +3782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
+    m_Left: 70
+    m_Right: 0
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 4
@@ -3865,8 +3867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 849.35, y: -540}
-  m_SizeDelta: {x: 470.5133, y: 1060}
+  m_AnchoredPosition: {x: 787.743, y: -540}
+  m_SizeDelta: {x: 390.2585, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150838854
 MonoBehaviour:
