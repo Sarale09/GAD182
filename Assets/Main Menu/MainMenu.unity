@@ -245,10 +245,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1073638600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 331.30685, y: -540}
-  m_SizeDelta: {x: 522.6137, y: 1060}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 523.74506, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24762328
 MonoBehaviour:
@@ -271,10 +271,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<b>MAIN MENU</b>\r\nMirza Wilayat Ali (Scripting)\r\nAlejandra Sarmiento
-    (Design)\r\n\r\n<b>BAR FIGHT</b>\r\nHarrison Elton\r\n\r\n<b>BLACKLIST CHECKING</b>\r\nNicholas
-    Wun \r\nHarrison Elton (Timer)\r\n\r\n<b>CAN YOU POUR IT?</b>\r\nAlejandra Sarmiento\r\nHarrison
-    Elton (Timer)\r\n\r\n<b>HEAT IT UP!</b>\r\nAlejandra Sarmiento\r\nHarrison Elton
-    (Timer)\r"
+    (Design)\r\n\n<b>GAME TIMER</b>\nHarrison Elton\n\r\n<b>BAR FIGHT</b>\r\nHarrison
+    Elton\r\n\r\n<b>BLACKLIST CHECKING</b>\r\nNicholas Wun \r\n\r\n<b>CAN YOU POUR
+    IT?</b>\r\nAlejandra Sarmiento\r\n\r\n<b>HEAT IT UP!</b>\r\nAlejandra Sarmiento\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1489,10 +1488,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1073638600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1451.436, y: -540}
-  m_SizeDelta: {x: 937.12775, y: 1060}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 769.81, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417759877
 MonoBehaviour:
@@ -3783,17 +3782,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 70
-    m_Right: 0
+    m_Right: 25
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!114 &1073638602
 MonoBehaviour:
@@ -3865,10 +3864,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1073638600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 787.743, y: -540}
-  m_SizeDelta: {x: 390.2585, y: 1060}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 434.98, y: 1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150838854
 MonoBehaviour:
@@ -3890,10 +3889,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>HOLD EM OFF!</b>\r\nMirza Wilayat Ali\r\nHarrison Elton (Timer)\r\n\n<b>KEG
-    REPAIR</b>\r\nHarrison Elton \r\n\r\n<b>TAKE A FLIER</b>\r\nNicholas Wun\r\nHarrison
-    Elton (Timer)\r\n\r\n<b>TAVERN TALLY</b>\r\nMirza Wilayat Ali\r\nHarrison Elton
-    (Timer)\r\n\n<b>SPRITE ASSETS</b>\r\nNicholas Wun\r\nAlejandra Sarmiento\r"
+  m_text: "<b>HOLD EM OFF!</b>\r\nMirza Wilayat Ali\r\n\n<b>KEG REPAIR</b>\r\nHarrison
+    Elton \r\n\r\n<b>TAKE A FLIER</b>\r\nNicholas Wun\r\n\r\n<b>TAVERN TALLY</b>\r\nMirza
+    Wilayat Ali\r\n\n<b>SPRITE ASSETS</b>\r\nNicholas Wun\r\nAlejandra Sarmiento\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5898,7 +5896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1899689802
 RectTransform:
   m_ObjectHideFlags: 0
