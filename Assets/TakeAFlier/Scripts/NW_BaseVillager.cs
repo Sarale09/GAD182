@@ -97,7 +97,7 @@ public class NW_BaseVillager : NW_Movement2
                 {
                     audioSource.clip = audioClip;
                 }
-                audioSource.PlayOneShot(audioClip);
+                audioSource.PlayOneShot(audioClip, 0.2f);
             }
         }
     }

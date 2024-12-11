@@ -37,7 +37,7 @@ public class Bread : MonoBehaviour
     public TextMeshProUGUI timerText;
     public Button backToMenuBtn;
 
-    private float timeRemaining = 60f;
+    private float timeRemaining = 30f;
     private bool gameEnded = false;
 
     public AudioClip gameLostSound;

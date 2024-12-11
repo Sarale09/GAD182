@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &74470647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 498119371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &87578033 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4812261647299611113, guid: c7843c8b3d033a94492debba260a953f, type: 3}
@@ -132,7 +137,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5643212283387518550, guid: c7843c8b3d033a94492debba260a953f, type: 3}
   m_PrefabInstance: {fileID: 2518081402188363655}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 599137320}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -374,7 +379,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 549e7e0ad2fdf23439042c3b3c27dde0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.45
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -502,7 +507,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -823,6 +828,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+--- !u!1 &599137320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2602096377574312528, guid: c7843c8b3d033a94492debba260a953f, type: 3}
+  m_PrefabInstance: {fileID: 2518081402188363655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &745198795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1327,6 +1337,87 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+--- !u!1 &1097547652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 96166389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1178560598
+GameObject:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178560600}
+  - component: {fileID: 1178560599}
+  m_Layer: 0
+  m_Name: Prefab Indexer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1178560599
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178560598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a7c62fccbafd342991629222351294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scenePrefabInstances:
+  - _gameObject: {fileID: 1613488911}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1727710411}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1621778390}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1495405820}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 74470647}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1184373209}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1836747135}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1978994522}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1439887106}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1387216093}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 1097547652}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 2091615647}
+    _prefab: Assets/HoldEmOff/Prefabs/InsectSpawner.prefab
+  - _gameObject: {fileID: 599137320}
+    _prefab: Assets/Main Prefabs/Button.prefab
+--- !u!4 &1178560600
+Transform:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178560598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1184373209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 745198795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204881485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1581,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1639,6 +1730,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+--- !u!1 &1387216093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 1776279254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426656803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1869,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426656803}
   m_CullTransparentMesh: 1
+--- !u!1 &1439887106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 1893455931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1495405820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 1082318984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515121600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +2037,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aa36ddfefd140cf45bba4e07e761f0bd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 0.95
   Loop: 0
   Mute: 0
@@ -2015,6 +2121,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1613488911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 4292462561310065578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1621778390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 980421950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1727710411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 274037889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1776279254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2080,6 +2201,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+--- !u!1 &1836747135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 521738275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1891663930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,6 +2557,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968471805}
   m_CullTransparentMesh: 1
+--- !u!1 &1978994522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 1240996583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2091615647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054876394108140040, guid: 5c4e72f0e6c1d9446b248f46ffa52474, type: 3}
+  m_PrefabInstance: {fileID: 262700653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2518081402188363655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2629,3 +2765,4 @@ SceneRoots:
   - {fileID: 1891663931}
   - {fileID: 282918141}
   - {fileID: 309565908}
+  - {fileID: 1178560600}
