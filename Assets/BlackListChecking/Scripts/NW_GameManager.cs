@@ -9,6 +9,7 @@ public class NW_GameManager : MonoBehaviour
     public List<string> randomNameList;
     public List<string> blacklist;
     public List<GameObject> villagerList;
+    public List<GameObject> villagerPrefabs;
     private List<Vector2> positions = new List<Vector2>();
 
     public string namePlaceholder;
@@ -43,10 +44,13 @@ public class NW_GameManager : MonoBehaviour
         counter = 0;
         
         villagerNameList.Add("Scott");
-        villagerNameList.Add("Robert");
-        villagerNameList.Add("Tom");
+        villagerNameList.Add("Robin");
+        villagerNameList.Add("Alex");
         villagerNameList.Add("Lucy");
-        villagerNameList.Add("Misty");
+        villagerNameList.Add("Taylor");
+        
+        villagerPrefabs.Add(villagerPrefab);
+        villagerPrefabs.Add(villagerPrefab2);
         
         // randomize first blacklisted name
         criminalOne = villagerNameList[Random.Range(0, villagerNameList.Count)];
@@ -81,13 +85,17 @@ public class NW_GameManager : MonoBehaviour
         for (int i = 0; i < randomNameList.Count; i++)
         {
             namePlaceholder = randomNameList[counter];
-            if (namePlaceholder == "Scott" || namePlaceholder == "Tom" || namePlaceholder == "Robert")
+            if (namePlaceholder == "Scott")
             {
                 Instantiate(villagerPrefab, positions[i], Quaternion.identity);
             }
-            else
+            else if (namePlaceholder == "Lucy")
             {
                 Instantiate(villagerPrefab2, positions[i], Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(villagerPrefabs[Random.Range(0, villagerPrefabs.Count)], positions[i], Quaternion.identity);
             }
             
             counter += 1;
@@ -254,11 +262,11 @@ public class NW_GameManager : MonoBehaviour
                     
                     if (villager.villagerName == blacklist[0])
                     {
-                        listedName1.text = $"- <color=#B1B1B1><s>{blacklist[0]}</s></color>";
+                        listedName1.text = $"- <color=#605553><s>{blacklist[0]}</s></color>";
                     }
                     else if (villager.villagerName == blacklist[1])
                     {
-                        listedName2.text = $"- <color=#B1B1B1><s>{blacklist[1]}</s></color>";
+                        listedName2.text = $"- <color=#605553><s>{blacklist[1]}</s></color>";
                     }
                 }
                 

@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>SOUNDS</b>
+  m_text: '<b>AUDIO ASSETS</b>
 
     Small Water Spill - Freesound Community
 
